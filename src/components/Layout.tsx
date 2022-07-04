@@ -1,4 +1,7 @@
 import { ReactNode } from 'react'
+import Footer from './Footer'
+import Header from './Header'
+import Overlay from './Overlay'
 
 interface Props {
   children: ReactNode
@@ -7,10 +10,10 @@ interface Props {
 function Layout({ children }: Props) {
   return (
     <>
-      <div>overlay</div>
-      <header>header</header>
+      <Overlay />
+      <Header />
       {children}
-      <footer>footer</footer>
+      <Footer />
     </>
   )
 }
