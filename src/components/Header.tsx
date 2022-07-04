@@ -6,6 +6,18 @@ interface Props {
   setOverlayIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
+function Mobile({ overlayIsOpen, setOverlayIsOpen }: Props) {
+  return <div className='md:hidden'></div>
+}
+
+function Tablet({ overlayIsOpen, setOverlayIsOpen }: Props) {
+  return <div className='hidden md:block xl:hidden'>tablet header</div>
+}
+
+function Desktop({ overlayIsOpen, setOverlayIsOpen }: Props) {
+  return <div className='hidden xl:block'>desktop header</div>
+}
+
 function Header({ overlayIsOpen, setOverlayIsOpen }: Props) {
   return (
     <header
@@ -14,7 +26,9 @@ function Header({ overlayIsOpen, setOverlayIsOpen }: Props) {
         'fixed inset-x-0 h-24 border-b'
       )}
     >
-      <button onClick={() => setOverlayIsOpen(!overlayIsOpen)}>toggle overlay</button>
+      <Mobile overlayIsOpen={overlayIsOpen} setOverlayIsOpen={setOverlayIsOpen} />
+      <Tablet overlayIsOpen={overlayIsOpen} setOverlayIsOpen={setOverlayIsOpen} />
+      <Desktop overlayIsOpen={overlayIsOpen} setOverlayIsOpen={setOverlayIsOpen} />
     </header>
   )
 }
