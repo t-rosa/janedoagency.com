@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { Dispatch, SetStateAction } from 'react'
+import Logo from './Logo'
 
 interface Props {
   overlayIsOpen: boolean
@@ -7,11 +8,32 @@ interface Props {
 }
 
 function Mobile({ overlayIsOpen, setOverlayIsOpen }: Props) {
-  return <div className='md:hidden'></div>
+  return (
+    <div className='ml-3 flex h-full justify-between sm:hidden'>
+      <Logo withText />
+      <button
+        onClick={() => setOverlayIsOpen(!overlayIsOpen)}
+        className='grid w-36 place-items-center border-l'
+      >
+        <div
+          className={clsx(
+            overlayIsOpen ? 'translate-y-4' : '-translate-y-2',
+            'col-[1/2] row-[1/2] h-1 w-11/12 bg-white duration-500'
+          )}
+        />
+        <div
+          className={clsx(
+            overlayIsOpen ? '-translate-y-4' : 'translate-y-2',
+            'col-[1/2] row-[1/2] h-1 w-11/12 bg-white duration-500'
+          )}
+        />
+      </button>
+    </div>
+  )
 }
 
 function Tablet({ overlayIsOpen, setOverlayIsOpen }: Props) {
-  return <div className='hidden md:block xl:hidden'>tablet header</div>
+  return <div className='hidden sm:block xl:hidden'>tablet header</div>
 }
 
 function Desktop({ overlayIsOpen, setOverlayIsOpen }: Props) {
