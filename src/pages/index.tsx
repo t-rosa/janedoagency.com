@@ -9,9 +9,19 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className=''>
-        <h1>Home</h1>
-      </div>
+      <main className='pt-24'>
+        <h1 className='text-9xl'>Home</h1>
+        <h1 className='text-9xl'>Home</h1>
+        <h1 className='text-9xl'>Home</h1>
+        <h1 className='text-9xl'>Home</h1>
+        <h1 className='text-9xl'>Home</h1>
+        <h1 className='text-9xl'>Home</h1>
+        <h1 className='text-9xl'>Home</h1>
+        <h1 className='text-9xl'>Home</h1>
+        <h1 className='text-9xl'>Home</h1>
+        <h1 className='text-9xl'>Home</h1>
+        <h1 className='text-9xl'>Home</h1>
+      </main>
     </>
   )
 }

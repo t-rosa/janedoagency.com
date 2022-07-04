@@ -1,5 +1,5 @@
 function Footer() {
-  return <footer>footer</footer>
+  return <footer className='border-t'>footer</footer>
 }
 
 export default Footer
