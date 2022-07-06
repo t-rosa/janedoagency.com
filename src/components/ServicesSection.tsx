@@ -53,16 +53,16 @@ function GlassContainer({ children, className }: { children: ReactNode; classNam
 
 function Mobile() {
   return (
-    <GlassContainer className='px-5 py-24 sm:hidden'>
+    <GlassContainer className='px-10 py-24 sm:hidden'>
       <ul className='grid gap-12'>
         {SERVICES.map((service) => (
           <Fragment key={service.id}>
             <li className='grid place-items-center gap-6'>
-              <Image src={service.logo} alt={service.label} width={70} height={70} />
-              <h2 className='mx-auto max-w-[16rem] text-center font-display text-3xl font-bold capitalize'>
+              <Image src={service.logo} alt={service.label} width={60} height={60} />
+              <h2 className='mx-auto max-w-[13rem] text-center font-display text-2xl font-bold capitalize'>
                 {service.label}
               </h2>
-              <p className='max-w-[17rem] text-center text-lg'>{service.text}</p>
+              <p className='max-w-xs text-center text-lg font-light'>{service.text}</p>
             </li>
             {service.id !== 6 && <div className='mx-auto h-14 w-[1px] bg-zinc-100' />}
           </Fragment>
@@ -75,17 +75,17 @@ function Mobile() {
 function Tablet() {
   return (
     <GlassContainer className='-my-52 hidden py-24 px-5 sm:block xl:hidden'>
-      <ul className='grid grid-cols-[auto_3rem_auto] place-items-center gap-12'>
+      <ul className='grid grid-cols-[auto_2.5rem_auto] place-items-center gap-12'>
         {SERVICES.map((service, index) => (
           <Fragment key={service.id}>
             <li className='flex flex-col items-center justify-items-center gap-6'>
-              <Image src={service.logo} alt={service.label} height={45} width={45} />
-              <h2 className='max-w-[12rem] text-center font-display text-2xl font-bold capitalize'>
+              <Image src={service.logo} alt={service.label} height={60} width={60} />
+              <h2 className='max-w-[13rem] text-center font-display text-2xl font-bold capitalize'>
                 {service.label}
               </h2>
-              <p className='max-w-[17rem] text-center'>{service.text}</p>
+              <p className='text max-w-xs text-center text-lg font-light'>{service.text}</p>
             </li>
-            {index % 2 === 0 && <div className='h-[1px] w-14 bg-zinc-100' />}
+            {index % 2 === 0 && <div className='h-[1px] w-10 bg-zinc-100' />}
           </Fragment>
         ))}
       </ul>
@@ -95,16 +95,19 @@ function Tablet() {
 
 function Desktop() {
   return (
-    <GlassContainer className='-my-52 hidden p-10 xl:block'>
-      <ul className='grid place-items-center gap-24'>
+    <GlassContainer className='-my-52 hidden px-12 py-12 xl:block'>
+      <ul className='grid place-items-center '>
         <div className='col-[1/2] row-[1/3] h-[90%] w-20 border border-r-0' />
         {SERVICES.map((service) => (
-          <li key={service.id} className='flex flex-col items-center justify-items-center gap-6'>
-            <Image src={service.logo} alt={service.label} height={45} width={45} />
+          <li
+            key={service.id}
+            className='flex flex-col items-center justify-items-center gap-6 py-6 px-6'
+          >
+            <Image src={service.logo} alt={service.label} height={60} width={60} />
             <h2 className='max-w-[12rem] text-center font-display text-2xl font-bold capitalize'>
               {service.label}
             </h2>
-            <p className='max-w-[15rem] text-center'>{service.text}</p>
+            <p className='max-w-xs text-center text-lg font-light'>{service.text}</p>
           </li>
         ))}
         <div className='col-[5/6] row-[1/3] h-[90%] w-20 border border-l-0' />
