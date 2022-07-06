@@ -135,7 +135,7 @@ function Mobile() {
               <li key={social.id}>
                 <Link href={social.url}>
                   <a target='_blank' rel='noreferrer'>
-                    <Image src={social.logo} alt={social.label} />
+                    <Image src={social.logo} alt={social.label} width={60} height={60} />
                   </a>
                 </Link>
               </li>
@@ -191,7 +191,7 @@ function Tablet() {
               <li key={social.id}>
                 <Link href={social.url}>
                   <a target='_blank' rel='noreferrer'>
-                    <Image src={social.logo} alt={social.label} />
+                    <Image src={social.logo} alt={social.label} width={60} height={60} />
                   </a>
                 </Link>
               </li>
@@ -246,7 +246,7 @@ function Desktop() {
               <li key={social.id}>
                 <Link href={social.url}>
                   <a target='_blank' rel='noreferrer'>
-                    <Image src={social.logo} alt={social.label} />
+                    <Image src={social.logo} alt={social.label} width={60} height={60} />
                   </a>
                 </Link>
               </li>
