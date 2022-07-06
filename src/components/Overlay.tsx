@@ -46,7 +46,12 @@ const MENU = [
 ]
 function Mobile({ isOverlayOpen }: Props) {
   return (
-    <div className='flex h-full items-center pt-24 lg:hidden'>
+    <div
+      className={clsx(
+        isOverlayOpen ? 'opacity-100 delay-500' : 'opacity-0 delay-1300',
+        'flex h-full min-h-[500px] items-center pt-24 lg:hidden'
+      )}
+    >
       <nav className='z-10 mx-auto'>
         <ul className='grid gap-6'>
           {MENU.map((item) => (
@@ -92,7 +97,12 @@ function Mobile({ isOverlayOpen }: Props) {
 }
 function Desktop({ isOverlayOpen }: Props) {
   return (
-    <div className='hidden h-full grid-cols-[60%_auto] pt-24 lg:grid'>
+    <div
+      className={clsx(
+        isOverlayOpen ? 'opacity-100 delay-500' : 'opacity-0 delay-1300',
+        'hidden h-full min-h-[500px] grid-cols-[60%_auto] pt-24 lg:grid'
+      )}
+    >
       <nav className='relative z-10 grid h-full place-items-center bg-black'>
         <ul className='grid gap-6'>
           {MENU.map((item) => (
