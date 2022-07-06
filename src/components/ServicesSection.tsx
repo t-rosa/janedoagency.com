@@ -5,7 +5,7 @@ import communicationGraphiqueLogo from 'images/home/logo/communication-graphique
 import interviewPodcastLogo from 'images/home/logo/interview-podcast.svg'
 import marketingHorsMediaLogo from 'images/home/logo/marketing-hors-media.svg'
 import relationPresseLogo from 'images/home/logo/relation-presse.svg'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import { Fragment, ReactNode } from 'react'
 
 const SERVICES = [
