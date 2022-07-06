@@ -10,8 +10,8 @@ import blogText from 'images/vinyl/text/blog.svg'
 import contactText from 'images/vinyl/text/contact.svg'
 
 interface Props {
-  overlayIsOpen: boolean
-  setOverlayIsOpen: Dispatch<SetStateAction<boolean>>
+  isOverlayOpen: boolean
+  setIsOverlayOpen: Dispatch<SetStateAction<boolean>>
 }
 
 const MENU = [
@@ -47,7 +47,7 @@ const MENU = [
   },
 ]
 
-function Mobile({ overlayIsOpen, setOverlayIsOpen }: Props) {
+function Mobile({ isOverlayOpen, setIsOverlayOpen }: Props) {
   return (
     <div className='ml-3 flex h-full justify-between lg:hidden'>
       <nav className='flex items-center'>
@@ -58,18 +58,18 @@ function Mobile({ overlayIsOpen, setOverlayIsOpen }: Props) {
         </Link>
       </nav>
       <button
-        onClick={() => setOverlayIsOpen(!overlayIsOpen)}
+        onClick={() => setIsOverlayOpen(!isOverlayOpen)}
         className='grid w-36 place-items-center border-l'
       >
         <div
           className={clsx(
-            overlayIsOpen ? 'translate-y-4' : '-translate-y-2',
+            isOverlayOpen ? 'translate-y-4' : '-translate-y-2',
             'col-[1/2] row-[1/2] h-1 w-9/12 bg-white duration-500'
           )}
         />
         <div
           className={clsx(
-            overlayIsOpen ? '-translate-y-4' : 'translate-y-2',
+            isOverlayOpen ? '-translate-y-4' : 'translate-y-2',
             'col-[1/2] row-[1/2] h-1 w-9/12 bg-white duration-500'
           )}
         />
@@ -78,7 +78,7 @@ function Mobile({ overlayIsOpen, setOverlayIsOpen }: Props) {
   )
 }
 
-function Desktop({ overlayIsOpen, setOverlayIsOpen }: Props) {
+function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
   return (
     <div className='ml-10 hidden h-full grid-cols-[auto_10rem] gap-10 lg:grid'>
       <nav className='col-[1/2] flex items-center justify-between'>
@@ -88,7 +88,7 @@ function Desktop({ overlayIsOpen, setOverlayIsOpen }: Props) {
           </a>
         </Link>
         <ul
-          className={clsx(overlayIsOpen ? 'opacity-0' : 'opacity-100', 'flex gap-5 duration-500')}
+          className={clsx(isOverlayOpen ? 'opacity-0' : 'opacity-100', 'flex gap-5 duration-500')}
         >
           {MENU.map((item) => (
             <li key={item.id}>
@@ -103,18 +103,18 @@ function Desktop({ overlayIsOpen, setOverlayIsOpen }: Props) {
         </ul>
       </nav>
       <button
-        onClick={() => setOverlayIsOpen(!overlayIsOpen)}
+        onClick={() => setIsOverlayOpen(!isOverlayOpen)}
         className='col-[2/3] grid place-items-center border-l'
       >
         <div
           className={clsx(
-            overlayIsOpen ? 'translate-y-4' : '-translate-y-2',
+            isOverlayOpen ? 'translate-y-4' : '-translate-y-2',
             'col-[1/2] row-[1/2] h-1 w-9/12 bg-white duration-500'
           )}
         />
         <div
           className={clsx(
-            overlayIsOpen ? '-translate-y-4' : 'translate-y-2',
+            isOverlayOpen ? '-translate-y-4' : 'translate-y-2',
             'col-[1/2] row-[1/2] h-1 w-9/12 bg-white duration-500'
           )}
         />
@@ -123,16 +123,16 @@ function Desktop({ overlayIsOpen, setOverlayIsOpen }: Props) {
   )
 }
 
-function Header({ overlayIsOpen, setOverlayIsOpen }: Props) {
+function Header({ isOverlayOpen, setIsOverlayOpen }: Props) {
   return (
     <header
       className={clsx(
-        overlayIsOpen ? 'bg-black' : 'bg-zinc-900 transition-colors delay-[1700ms] ease-linear',
+        isOverlayOpen ? 'bg-black' : 'bg-zinc-900 transition-colors delay-[1700ms] ease-linear',
         'fixed inset-x-0 h-24 border-b'
       )}
     >
-      <Mobile overlayIsOpen={overlayIsOpen} setOverlayIsOpen={setOverlayIsOpen} />
-      <Desktop overlayIsOpen={overlayIsOpen} setOverlayIsOpen={setOverlayIsOpen} />
+      <Mobile isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
+      <Desktop isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
     </header>
   )
 }

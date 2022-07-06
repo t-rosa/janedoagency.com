@@ -8,12 +8,12 @@ interface Props {
 }
 
 function Layout({ children }: Props) {
-  const [overlayIsOpen, setOverlayIsOpen] = useState(false)
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false)
 
   return (
     <>
-      <Overlay overlayIsOpen={overlayIsOpen}/>
-      <Header overlayIsOpen={overlayIsOpen} setOverlayIsOpen={setOverlayIsOpen} />
+      <Overlay isOverlayOpen={isOverlayOpen}/>
+      <Header isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
       {children}
       <Footer />
     </>
