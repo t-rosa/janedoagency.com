@@ -2,6 +2,7 @@ import desktopBackground from 'images/home/main-desktop-bg.webp'
 import mobileBackground from 'images/home/main-mobile-bg.webp'
 import tabletBackground from 'images/home/main-tablet-bg.webp'
 import Image from 'next/future/image'
+import Link from 'next/link'
 
 function Mobile() {
   return (
@@ -21,9 +22,9 @@ function Mobile() {
           Découvrez notre multitude de services et compétences à travers notre site internet ainsi
           que nos différents réseaux.
         </p>
-        <button className='border py-2 px-4 font-display text-2xl font-bold uppercase'>
-          découvrir
-        </button>
+        <Link href='#discover'>
+          <a className='border py-2 px-4 font-display text-2xl font-bold uppercase'>découvrir</a>
+        </Link>
       </div>
     </div>
   )
@@ -50,9 +51,11 @@ function Tablet() {
             Découvrez notre multitude de services et compétences à travers notre site internet ainsi
             que nos différents réseaux.
           </p>
-          <button className='w-fit self-start border py-3 px-6 font-display text-3xl font-bold uppercase hover:border-hover hover:text-hover lg:py-4 lg:px-8 lg:text-4xl'>
-            découvrir
-          </button>
+          <Link href='#discover'>
+            <a className='w-fit self-start border py-3 px-6 font-display text-3xl font-bold uppercase hover:border-hover hover:text-hover lg:py-4 lg:px-8 lg:text-4xl'>
+              découvrir
+            </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -79,9 +82,11 @@ function Desktop() {
             que nos différents réseaux. Jane Do c&apos;est l’agence qui vous aidera à trouver votre
             place, qu’importe votre style !
           </p>
-          <button className='w-fit self-start border py-4 px-8 font-display text-4xl font-bold uppercase hover:border-hover hover:text-hover'>
-            découvrir
-          </button>
+          <Link href='#discover'>
+            <a className='w-fit self-start border py-4 px-8 font-display text-4xl font-bold uppercase hover:border-hover hover:text-hover'>
+              découvrir
+            </a>
+          </Link>
         </div>
       </div>
     </div>
