@@ -46,8 +46,8 @@ const MENU = [
 ]
 function Mobile({ isOverlayOpen }: Props) {
   return (
-    <div className='grid h-full place-items-center pt-24 lg:hidden'>
-      <nav className='z-10'>
+    <div className='flex h-full items-center pt-24 lg:hidden'>
+      <nav className='z-10 mx-auto'>
         <ul className='grid gap-6'>
           {MENU.map((item) => (
             <li key={item.id} className='overflow-y-hidden'>
