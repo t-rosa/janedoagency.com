@@ -10,9 +10,10 @@ function Mobile() {
       <Image
         src={mobileBackground}
         className='opacity-50 mix-blend-lighten'
-        alt=''
+        alt='Image de fond de la section principale'
         width={640}
         height={760}
+        priority
       />
       <div className='absolute inset-0 grid place-items-center px-5'>
         <h1 className='max-w-xs text-center font-display text-5xl font-bold'>
@@ -37,7 +38,7 @@ function Tablet() {
         <Image
           src={tabletBackground}
           className='opacity-50 mix-blend-lighten'
-          alt=''
+          alt='Image de fond de la section principale'
           width={640}
           height={760}
         />
@@ -69,7 +70,7 @@ function Desktop() {
         <Image
           src={desktopBackground}
           className=' mix-blend-lighten'
-          alt=''
+          alt='Image de fond de la section principale'
           width={800}
           height={940}
         />
