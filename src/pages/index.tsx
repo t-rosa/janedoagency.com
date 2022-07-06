@@ -1,5 +1,7 @@
 import MainSection from 'components/MainSection'
 import DiscoverSection from 'components/DiscoverSection'
+import ServicesSection from 'components/ServicesSection'
+import JoinSection from 'components/JoinSection'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
@@ -14,6 +16,8 @@ const Home: NextPage = () => {
       <main className='flex flex-col pt-24'>
         <MainSection />
         <DiscoverSection />
+        <ServicesSection />
+        <JoinSection />
       </main>
     </>
   )
