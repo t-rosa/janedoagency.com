@@ -1,3 +1,4 @@
+import MainSection from 'components/MainSection'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
@@ -9,18 +10,8 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='pt-24'>
-        <h1 className='text-9xl'>Home</h1>
-        <h1 className='text-9xl'>Home</h1>
-        <h1 className='text-9xl'>Home</h1>
-        <h1 className='text-9xl'>Home</h1>
-        <h1 className='text-9xl'>Home</h1>
-        <h1 className='text-9xl'>Home</h1>
-        <h1 className='text-9xl'>Home</h1>
-        <h1 className='text-9xl'>Home</h1>
-        <h1 className='text-9xl'>Home</h1>
-        <h1 className='text-9xl'>Home</h1>
-        <h1 className='text-9xl'>Home</h1>
+      <main className='flex flex-col pt-24'>
+        <MainSection />
       </main>
     </>
   )
