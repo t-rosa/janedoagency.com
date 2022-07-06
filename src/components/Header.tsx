@@ -128,7 +128,7 @@ function Header({ isOverlayOpen, setIsOverlayOpen }: Props) {
     <header
       className={clsx(
         isOverlayOpen ? 'bg-black' : 'bg-zinc-900 transition-colors delay-[1700ms] ease-linear',
-        'fixed inset-x-0 h-24 border-b'
+        'fixed inset-x-0 z-10 h-24 border-b'
       )}
     >
       <Mobile isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
