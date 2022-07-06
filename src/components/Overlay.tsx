@@ -159,7 +159,7 @@ function Overlay({ isOverlayOpen }: Props) {
     <div
       className={clsx(
         isOverlayOpen ? 'translate-y-0' : '-translate-y-full delay-[1300ms]',
-        'fixed inset-0 bg-black duration-500'
+        'fixed inset-0 z-10 bg-black duration-500'
       )}
     >
       <Mobile isOverlayOpen={isOverlayOpen} />
