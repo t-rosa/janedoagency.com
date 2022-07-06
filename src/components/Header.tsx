@@ -93,7 +93,7 @@ function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
           {MENU.map((item) => (
             <li key={item.id}>
               <Link href={item.path}>
-                <a className='relative before:absolute before:bottom-0 before:h-[1px] before:w-0 before:bg-hover before:duration-500 hover:text-hover before:hover:w-full'>
+                <a className='relative block before:absolute before:bottom-0 before:h-[1px] before:w-0 before:bg-hover before:duration-500 hover:text-hover before:hover:w-full'>
                   <div className='text-xl font-light'>0{item.id}.</div>
                   <div className='font-display text-2xl capitalize'>{item.label}</div>
                 </a>
