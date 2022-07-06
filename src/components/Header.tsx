@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { Dispatch, SetStateAction } from 'react'
 import Logo from './Logo'
+
 import teamText from 'images/vinyl/text/equipe.svg'
 import servicesText from 'images/vinyl/text/services.svg'
 import achievementsText from 'images/vinyl/text/realisations.svg'
@@ -86,7 +87,9 @@ function Desktop({ overlayIsOpen, setOverlayIsOpen }: Props) {
             <Logo withText />
           </a>
         </Link>
-        <ul className='flex gap-5 '>
+        <ul
+          className={clsx(overlayIsOpen ? 'opacity-0' : 'opacity-100', 'flex gap-5 duration-500')}
+        >
           {MENU.map((item) => (
             <li key={item.id}>
               <Link href={item.path}>
@@ -124,7 +127,7 @@ function Header({ overlayIsOpen, setOverlayIsOpen }: Props) {
   return (
     <header
       className={clsx(
-        overlayIsOpen ? 'bg-black' : 'bg-zinc-900 transition-colors delay-[300ms] ease-linear',
+        overlayIsOpen ? 'bg-black' : 'bg-zinc-900 transition-colors delay-[1700ms] ease-linear',
         'fixed inset-x-0 h-24 border-b'
       )}
     >
