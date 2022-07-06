@@ -9,7 +9,7 @@ function Mobile() {
       <Image
         src={mobileBackground}
         className='opacity-50 mix-blend-lighten'
-        alt=''
+        alt='Image de fond de la section "découvrir"'
         width={640}
         height={760}
       />
@@ -32,7 +32,7 @@ function Tablet() {
       <Image
         src={tabletBackground}
         className='opacity-50 mix-blend-lighten'
-        alt=''
+        alt='Image de fond de la section "découvrir"'
         width={640}
         height={760}
       />
@@ -57,7 +57,7 @@ function Desktop() {
       <Image
         src={desktopBackground}
         className=' mix-blend-lighten'
-        alt=''
+        alt='Image de fond de la section "découvrir"'
         width={800}
         height={940}
       />
