@@ -11,7 +11,6 @@ export default function Document() {
         <meta charSet='UTF-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
         <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon' />
-        <link rel='stylesheet' href='https://use.typekit.net/cio7rgj.css' />
       </Head>
       <body>
         <Main />
