@@ -2,49 +2,23 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import Image from 'next/future/image'
 import vinyl from 'images/vinyl/vinyl.webp'
+import teamVinylText from 'images/vinyl/text/accueil.svg'
+import achievementsVinylText from 'images/vinyl/text/realisations.svg'
+import servicesVinylText from 'images/vinyl/text/services.svg'
+import contactVinylText from 'images/vinyl/text/contact.svg'
+import blogVinylText from 'images/vinyl/text/blog.svg'
 import homeVinylText from 'images/vinyl/text/accueil.svg'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 interface Props {
+  MENU: any[]
   isOverlayOpen: boolean
+  setIsOverlayOpen: Dispatch<SetStateAction<boolean>>
+  vinylText: string
+  setVinylText: Dispatch<SetStateAction<string>>
 }
-const MENU = [
-  {
-    id: 1,
-    label: 'équipe',
-    url: '/team',
-    delayIn: 'delay-300',
-    delayOut: 'delay-600',
-  },
-  {
-    id: 2,
-    label: 'services',
-    url: '/services',
-    delayIn: 'delay-400',
-    delayOut: 'delay-700',
-  },
-  {
-    id: 3,
-    label: 'réalisations',
-    url: '/achievements',
-    delayIn: 'delay-500',
-    delayOut: 'delay-800',
-  },
-  {
-    id: 4,
-    label: 'blog',
-    url: '/blog',
-    delayIn: 'delay-600',
-    delayOut: 'delay-900',
-  },
-  {
-    id: 5,
-    label: 'contact',
-    url: '/contact',
-    delayIn: 'delay-700',
-    delayOut: 'delay-1000',
-  },
-]
-function Mobile({ isOverlayOpen }: Props) {
+function Mobile({ MENU, isOverlayOpen, setIsOverlayOpen, vinylText, setVinylText }: Props) {
   return (
     <div
       className={clsx(
@@ -58,6 +32,12 @@ function Mobile({ isOverlayOpen }: Props) {
             <li key={item.id} className='overflow-y-hidden'>
               <Link href={item.url}>
                 <a
+                  onClick={() => {
+                    setTimeout(() => {
+                      setVinylText(item.vinylText)
+                    }, 1500)
+                    setIsOverlayOpen(false)
+                  }}
                   className={clsx(
                     isOverlayOpen ? `translate-y-0 ` : `translate-y-full `,
                     `block transition-transform ${item.delayIn} duration-500 `
@@ -85,7 +65,7 @@ function Mobile({ isOverlayOpen }: Props) {
           height={500}
         />
         <Image
-          src={homeVinylText}
+          src={vinylText}
           alt=''
           className='col-[1/2] row-[1/2] animate-spin-vinyl'
           width={500}
@@ -95,7 +75,7 @@ function Mobile({ isOverlayOpen }: Props) {
     </div>
   )
 }
-function Desktop({ isOverlayOpen }: Props) {
+function Desktop({ MENU, isOverlayOpen, setIsOverlayOpen, vinylText, setVinylText }: Props) {
   return (
     <div
       className={clsx(
@@ -109,6 +89,12 @@ function Desktop({ isOverlayOpen }: Props) {
             <li key={item.id} className='overflow-y-hidden'>
               <Link href={item.url}>
                 <a
+                  onClick={() => {
+                    setTimeout(() => {
+                      setVinylText(item.vinylText)
+                    }, 1500)
+                    setIsOverlayOpen(false)
+                  }}
                   className={clsx(
                     isOverlayOpen
                       ? `translate-y-0 ${item.delayIn}`
@@ -144,7 +130,7 @@ function Desktop({ isOverlayOpen }: Props) {
           height={800}
         />
         <Image
-          src={homeVinylText}
+          src={vinylText}
           alt=''
           className='col-[1/2] row-[1/2] animate-spin-vinyl'
           width={800}
@@ -154,7 +140,8 @@ function Desktop({ isOverlayOpen }: Props) {
     </div>
   )
 }
-function Overlay({ isOverlayOpen }: Props) {
+
+function Overlay({ MENU, isOverlayOpen, setIsOverlayOpen, vinylText, setVinylText }: Props) {
   return (
     <div
       className={clsx(
@@ -162,8 +149,20 @@ function Overlay({ isOverlayOpen }: Props) {
         'fixed inset-0 z-10 bg-black duration-500'
       )}
     >
-      <Mobile isOverlayOpen={isOverlayOpen} />
-      <Desktop isOverlayOpen={isOverlayOpen} />
+      <Mobile
+        MENU={MENU}
+        isOverlayOpen={isOverlayOpen}
+        setIsOverlayOpen={setIsOverlayOpen}
+        vinylText={vinylText}
+        setVinylText={setVinylText}
+      />
+      <Desktop
+        MENU={MENU}
+        isOverlayOpen={isOverlayOpen}
+        setIsOverlayOpen={setIsOverlayOpen}
+        vinylText={vinylText}
+        setVinylText={setVinylText}
+      />
     </div>
   )
 }

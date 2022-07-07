@@ -3,56 +3,37 @@ import Link from 'next/link'
 import { Dispatch, SetStateAction } from 'react'
 import Logo from './Logo'
 
-import teamText from 'images/vinyl/text/equipe.svg'
-import servicesText from 'images/vinyl/text/services.svg'
-import achievementsText from 'images/vinyl/text/realisations.svg'
-import blogText from 'images/vinyl/text/blog.svg'
-import contactText from 'images/vinyl/text/contact.svg'
+import teamVinylText from 'images/vinyl/text/accueil.svg'
+import achievementsVinylText from 'images/vinyl/text/realisations.svg'
+import servicesVinylText from 'images/vinyl/text/services.svg'
+import contactVinylText from 'images/vinyl/text/contact.svg'
+import blogVinylText from 'images/vinyl/text/blog.svg'
+import homeVinylText from 'images/vinyl/text/accueil.svg'
 
 interface Props {
+  MENU: any[]
   isOverlayOpen: boolean
   setIsOverlayOpen: Dispatch<SetStateAction<boolean>>
+  setVinylText: Dispatch<SetStateAction<string>>
 }
 
-const MENU = [
-  {
-    id: 1,
-    label: 'équipe',
-    path: '/team',
-    vinylText: teamText,
-  },
-  {
-    id: 2,
-    label: 'services',
-    path: '/services',
-    vinylText: servicesText,
-  },
-  {
-    id: 3,
-    label: 'réalisations',
-    path: '/achievements',
-    vinylText: achievementsText,
-  },
-  {
-    id: 4,
-    label: 'blog',
-    path: '/blog',
-    vinylText: blogText,
-  },
-  {
-    id: 5,
-    label: 'contact',
-    path: '/contact',
-    vinylText: contactText,
-  },
-]
-
-function Mobile({ isOverlayOpen, setIsOverlayOpen }: Props) {
+function Mobile({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
   return (
     <div className='ml-3 flex h-full justify-between lg:hidden'>
       <nav className='flex items-center'>
         <Link href='/'>
-          <a>
+          <a
+            onClick={() => {
+              if (isOverlayOpen) {
+                setIsOverlayOpen(false)
+                setTimeout(() => {
+                  setVinylText(homeVinylText)
+                }, 1500)
+              } else {
+                setVinylText(homeVinylText)
+              }
+            }}
+          >
             <Logo withText />
           </a>
         </Link>
@@ -78,12 +59,23 @@ function Mobile({ isOverlayOpen, setIsOverlayOpen }: Props) {
   )
 }
 
-function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
+function Desktop({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
   return (
     <div className='ml-10 hidden h-full grid-cols-[auto_10rem] gap-10 lg:grid'>
       <nav className='col-[1/2] flex items-center justify-between'>
         <Link href='/'>
-          <a>
+          <a
+            onClick={() => {
+              if (isOverlayOpen) {
+                setIsOverlayOpen(false)
+                setTimeout(() => {
+                  setVinylText(homeVinylText)
+                }, 1500)
+              } else {
+                setVinylText(homeVinylText)
+              }
+            }}
+          >
             <Logo withText />
           </a>
         </Link>
@@ -92,8 +84,11 @@ function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
         >
           {MENU.map((item) => (
             <li key={item.id}>
-              <Link href={item.path}>
-                <a className='relative block before:absolute before:bottom-0 before:h-[1px] before:w-0 before:bg-hover before:duration-500 hover:text-hover before:hover:w-full'>
+              <Link href={item.url}>
+                <a
+                  onClick={() => setVinylText(item.vinylText)}
+                  className='relative block before:absolute before:bottom-0 before:h-[1px] before:w-0 before:bg-hover before:duration-500 hover:text-hover before:hover:w-full'
+                >
                   <div className='text-xl font-light'>0{item.id}.</div>
                   <div className='font-display text-2xl capitalize'>{item.label}</div>
                 </a>
@@ -123,7 +118,7 @@ function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
   )
 }
 
-function Header({ isOverlayOpen, setIsOverlayOpen }: Props) {
+function Header({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
   return (
     <header
       className={clsx(
@@ -131,8 +126,18 @@ function Header({ isOverlayOpen, setIsOverlayOpen }: Props) {
         'fixed inset-x-0 z-10 h-24 border-b'
       )}
     >
-      <Mobile isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
-      <Desktop isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
+      <Mobile
+        MENU={MENU}
+        isOverlayOpen={isOverlayOpen}
+        setIsOverlayOpen={setIsOverlayOpen}
+        setVinylText={setVinylText}
+      />
+      <Desktop
+        MENU={MENU}
+        isOverlayOpen={isOverlayOpen}
+        setIsOverlayOpen={setIsOverlayOpen}
+        setVinylText={setVinylText}
+      />
     </header>
   )
 }

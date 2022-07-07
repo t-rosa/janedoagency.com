@@ -53,7 +53,7 @@ function Tablet() {
             Découvrez notre multitude de services et compétences à travers notre site internet ainsi
             que nos différents réseaux.
           </p>
-          <Link href='#discover'>
+          <Link href='/contact'>
             <a className='w-fit self-start border py-3 px-6 font-display text-3xl font-bold uppercase hover:border-hover hover:text-hover lg:py-4 lg:px-8 lg:text-4xl'>
               nous contacter
             </a>
@@ -84,7 +84,7 @@ function Desktop() {
             que nos différents réseaux. Jane Do c&apos;est l’agence qui vous aidera à trouver votre
             place, qu’importe votre style !
           </p>
-          <Link href='#discover'>
+          <Link href='/contact'>
             <a className='w-fit self-start border py-4 px-8 font-display text-4xl font-bold uppercase hover:border-hover hover:text-hover'>
               nous contacter
             </a>
