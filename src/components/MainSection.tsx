@@ -40,7 +40,8 @@ function Tablet() {
           className='opacity-50 mix-blend-lighten'
           alt='Image de fond de la section principale'
           width={640}
-          height={984}
+          height={760}
+          priority
         />
       </div>
       <div className='absolute inset-0 flex items-center px-5'>
@@ -73,6 +74,7 @@ function Desktop() {
           alt='Image de fond de la section principale'
           width={800}
           height={940}
+          priority
         />
       </div>
       <div className='absolute inset-0 flex items-center px-5'>
@@ -95,7 +97,7 @@ function Desktop() {
 }
 function MainSection() {
   return (
-    <section className='relative'>
+    <section className='relative sm:mb-24'>
       <Mobile />
       <Tablet />
       <Desktop />
