@@ -99,7 +99,7 @@ function Desktop() {
   return (
     <GlassContainer className='-my-52 hidden px-12 py-12 xl:block'>
       <ul className='grid place-items-center '>
-        <div className='col-[1/2] row-[1/3] h-[90%] w-20 border border-r-0' />
+        <li className='col-[1/2] row-[1/3] h-[90%] w-20 border border-r-0' />
         {SERVICES.map((service) => (
           <li
             key={service.id}
@@ -112,7 +112,7 @@ function Desktop() {
             <p className='max-w-xs text-center text-lg font-light'>{service.text}</p>
           </li>
         ))}
-        <div className='col-[5/6] row-[1/3] h-[90%] w-20 border border-l-0' />
+        <li className='col-[5/6] row-[1/3] h-[90%] w-20 border border-l-0' />
       </ul>
     </GlassContainer>
   )
