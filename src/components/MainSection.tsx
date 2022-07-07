@@ -12,7 +12,7 @@ function Mobile() {
         className='opacity-50 mix-blend-lighten'
         alt='Image de fond de la section principale'
         width={640}
-        height={760}
+        height={984}
         priority
       />
       <div className='absolute inset-0 grid place-items-center px-5'>
@@ -69,7 +69,7 @@ function Desktop() {
       <div className='flex justify-end'>
         <Image
           src={desktopBackground}
-          className=' mix-blend-lighten'
+          className='mix-blend-lighten'
           alt='Image de fond de la section principale'
           width={800}
           height={940}
