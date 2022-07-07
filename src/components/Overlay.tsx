@@ -2,12 +2,20 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import Image from 'next/future/image'
 import vinyl from 'images/vinyl/vinyl.webp'
+import teamVinylText from 'images/vinyl/text/accueil.svg'
+import achievementsVinylText from 'images/vinyl/text/realisations.svg'
+import servicesVinylText from 'images/vinyl/text/services.svg'
+import contactVinylText from 'images/vinyl/text/contact.svg'
+import blogVinylText from 'images/vinyl/text/blog.svg'
 import homeVinylText from 'images/vinyl/text/accueil.svg'
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 interface Props {
   isOverlayOpen: boolean
   setIsOverlayOpen: Dispatch<SetStateAction<boolean>>
+  vinylText: string
+  setVinylText: Dispatch<SetStateAction<string>>
 }
 const MENU = [
   {
@@ -16,6 +24,7 @@ const MENU = [
     url: '/team',
     delayIn: 'delay-300',
     delayOut: 'delay-600',
+    vinylText: teamVinylText,
   },
   {
     id: 2,
@@ -23,6 +32,7 @@ const MENU = [
     url: '/services',
     delayIn: 'delay-400',
     delayOut: 'delay-700',
+    vinylText: servicesVinylText,
   },
   {
     id: 3,
@@ -30,6 +40,7 @@ const MENU = [
     url: '/achievements',
     delayIn: 'delay-500',
     delayOut: 'delay-800',
+    vinylText: achievementsVinylText,
   },
   {
     id: 4,
@@ -37,6 +48,7 @@ const MENU = [
     url: '/blog',
     delayIn: 'delay-600',
     delayOut: 'delay-900',
+    vinylText: blogVinylText,
   },
   {
     id: 5,
@@ -44,9 +56,10 @@ const MENU = [
     url: '/contact',
     delayIn: 'delay-700',
     delayOut: 'delay-1000',
+    vinylText: contactVinylText,
   },
 ]
-function Mobile({ isOverlayOpen, setIsOverlayOpen }: Props) {
+function Mobile({ isOverlayOpen, setIsOverlayOpen, vinylText, setVinylText }: Props) {
   return (
     <div
       className={clsx(
@@ -60,7 +73,12 @@ function Mobile({ isOverlayOpen, setIsOverlayOpen }: Props) {
             <li key={item.id} className='overflow-y-hidden'>
               <Link href={item.url}>
                 <a
-                  onClick={() => setIsOverlayOpen(false)}
+                  onClick={() => {
+                    setTimeout(() => {
+                      setVinylText(item.vinylText)
+                    }, 1500)
+                    setIsOverlayOpen(false)
+                  }}
                   className={clsx(
                     isOverlayOpen ? `translate-y-0 ` : `translate-y-full `,
                     `block transition-transform ${item.delayIn} duration-500 `
@@ -88,7 +106,7 @@ function Mobile({ isOverlayOpen, setIsOverlayOpen }: Props) {
           height={500}
         />
         <Image
-          src={homeVinylText}
+          src={vinylText}
           alt=''
           className='col-[1/2] row-[1/2] animate-spin-vinyl'
           width={500}
@@ -98,7 +116,7 @@ function Mobile({ isOverlayOpen, setIsOverlayOpen }: Props) {
     </div>
   )
 }
-function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
+function Desktop({ isOverlayOpen, setIsOverlayOpen, vinylText, setVinylText }: Props) {
   return (
     <div
       className={clsx(
@@ -112,7 +130,12 @@ function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
             <li key={item.id} className='overflow-y-hidden'>
               <Link href={item.url}>
                 <a
-                  onClick={() => setIsOverlayOpen(false)}
+                  onClick={() => {
+                    setTimeout(() => {
+                      setVinylText(item.vinylText)
+                    }, 1500)
+                    setIsOverlayOpen(false)
+                  }}
                   className={clsx(
                     isOverlayOpen
                       ? `translate-y-0 ${item.delayIn}`
@@ -148,7 +171,7 @@ function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
           height={800}
         />
         <Image
-          src={homeVinylText}
+          src={vinylText}
           alt=''
           className='col-[1/2] row-[1/2] animate-spin-vinyl'
           width={800}
@@ -158,7 +181,7 @@ function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
     </div>
   )
 }
-function Overlay({ isOverlayOpen, setIsOverlayOpen }: Props) {
+function Overlay({ isOverlayOpen, setIsOverlayOpen, vinylText, setVinylText }: Props) {
   return (
     <div
       className={clsx(
@@ -166,8 +189,18 @@ function Overlay({ isOverlayOpen, setIsOverlayOpen }: Props) {
         'fixed inset-0 z-10 bg-black duration-500'
       )}
     >
-      <Mobile isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
-      <Desktop isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
+      <Mobile
+        isOverlayOpen={isOverlayOpen}
+        setIsOverlayOpen={setIsOverlayOpen}
+        vinylText={vinylText}
+        setVinylText={setVinylText}
+      />
+      <Desktop
+        isOverlayOpen={isOverlayOpen}
+        setIsOverlayOpen={setIsOverlayOpen}
+        vinylText={vinylText}
+        setVinylText={setVinylText}
+      />
     </div>
   )
 }
