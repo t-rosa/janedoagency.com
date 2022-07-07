@@ -3,11 +3,6 @@ import Link from 'next/link'
 import { Dispatch, SetStateAction } from 'react'
 import Logo from './Logo'
 
-import teamVinylText from 'images/vinyl/text/accueil.svg'
-import achievementsVinylText from 'images/vinyl/text/realisations.svg'
-import servicesVinylText from 'images/vinyl/text/services.svg'
-import contactVinylText from 'images/vinyl/text/contact.svg'
-import blogVinylText from 'images/vinyl/text/blog.svg'
 import homeVinylText from 'images/vinyl/text/accueil.svg'
 
 interface Props {
@@ -17,7 +12,7 @@ interface Props {
   setVinylText: Dispatch<SetStateAction<string>>
 }
 
-function Mobile({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
+function Mobile({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
   return (
     <div className='ml-3 flex h-full justify-between lg:hidden'>
       <nav className='flex items-center'>
@@ -39,6 +34,7 @@ function Mobile({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) 
         </Link>
       </nav>
       <button
+        aria-label='Ouvrir/Fermer le menu'
         onClick={() => setIsOverlayOpen(!isOverlayOpen)}
         className='grid w-36 place-items-center border-l'
       >
@@ -98,6 +94,7 @@ function Desktop({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props)
         </ul>
       </nav>
       <button
+        aria-label='Ouvrir/Fermer le menu'
         onClick={() => setIsOverlayOpen(!isOverlayOpen)}
         className='col-[2/3] grid place-items-center border-l'
       >
