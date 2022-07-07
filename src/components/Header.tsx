@@ -11,45 +11,13 @@ import blogVinylText from 'images/vinyl/text/blog.svg'
 import homeVinylText from 'images/vinyl/text/accueil.svg'
 
 interface Props {
+  MENU: any[]
   isOverlayOpen: boolean
   setIsOverlayOpen: Dispatch<SetStateAction<boolean>>
   setVinylText: Dispatch<SetStateAction<string>>
 }
 
-const MENU = [
-  {
-    id: 1,
-    label: 'équipe',
-    url: '/team',
-    vinylText: teamVinylText,
-  },
-  {
-    id: 2,
-    label: 'services',
-    url: '/services',
-    vinylText: servicesVinylText,
-  },
-  {
-    id: 3,
-    label: 'réalisations',
-    url: '/achievements',
-    vinylText: achievementsVinylText,
-  },
-  {
-    id: 4,
-    label: 'blog',
-    url: '/blog',
-    vinylText: blogVinylText,
-  },
-  {
-    id: 5,
-    label: 'contact',
-    url: '/contact',
-    vinylText: contactVinylText,
-  },
-]
-
-function Mobile({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
+function Mobile({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
   return (
     <div className='ml-3 flex h-full justify-between lg:hidden'>
       <nav className='flex items-center'>
@@ -91,7 +59,7 @@ function Mobile({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
   )
 }
 
-function Desktop({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
+function Desktop({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
   return (
     <div className='ml-10 hidden h-full grid-cols-[auto_10rem] gap-10 lg:grid'>
       <nav className='col-[1/2] flex items-center justify-between'>
@@ -150,7 +118,7 @@ function Desktop({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
   )
 }
 
-function Header({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
+function Header({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
   return (
     <header
       className={clsx(
@@ -159,11 +127,13 @@ function Header({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
       )}
     >
       <Mobile
+        MENU={MENU}
         isOverlayOpen={isOverlayOpen}
         setIsOverlayOpen={setIsOverlayOpen}
         setVinylText={setVinylText}
       />
       <Desktop
+        MENU={MENU}
         isOverlayOpen={isOverlayOpen}
         setIsOverlayOpen={setIsOverlayOpen}
         setVinylText={setVinylText}
