@@ -143,7 +143,7 @@ function Mobile() {
           </ul>
         </nav>
       </div>
-      <Link href='/#'>
+      <Link href='#'>
         <a>
           <Logo />
         </a>
@@ -199,7 +199,7 @@ function Tablet() {
           </ul>
         </nav>
       </div>
-      <Link href='/#'>
+      <Link href='#'>
         <a>
           <Logo />
         </a>
@@ -254,7 +254,7 @@ function Desktop() {
           </ul>
         </nav>
       </div>
-      <Link href='/#'>
+      <Link href='#'>
         <a className='self-start'>
           <Logo />
         </a>
