@@ -3,9 +3,11 @@ import Link from 'next/link'
 import Image from 'next/future/image'
 import vinyl from 'images/vinyl/vinyl.webp'
 import homeVinylText from 'images/vinyl/text/accueil.svg'
+import { Dispatch, SetStateAction } from 'react'
 
 interface Props {
   isOverlayOpen: boolean
+  setIsOverlayOpen: Dispatch<SetStateAction<boolean>>
 }
 const MENU = [
   {
@@ -44,7 +46,7 @@ const MENU = [
     delayOut: 'delay-1000',
   },
 ]
-function Mobile({ isOverlayOpen }: Props) {
+function Mobile({ isOverlayOpen, setIsOverlayOpen }: Props) {
   return (
     <div
       className={clsx(
@@ -58,6 +60,7 @@ function Mobile({ isOverlayOpen }: Props) {
             <li key={item.id} className='overflow-y-hidden'>
               <Link href={item.url}>
                 <a
+                  onClick={() => setIsOverlayOpen(false)}
                   className={clsx(
                     isOverlayOpen ? `translate-y-0 ` : `translate-y-full `,
                     `block transition-transform ${item.delayIn} duration-500 `
@@ -95,7 +98,7 @@ function Mobile({ isOverlayOpen }: Props) {
     </div>
   )
 }
-function Desktop({ isOverlayOpen }: Props) {
+function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
   return (
     <div
       className={clsx(
@@ -109,6 +112,7 @@ function Desktop({ isOverlayOpen }: Props) {
             <li key={item.id} className='overflow-y-hidden'>
               <Link href={item.url}>
                 <a
+                  onClick={() => setIsOverlayOpen(false)}
                   className={clsx(
                     isOverlayOpen
                       ? `translate-y-0 ${item.delayIn}`
@@ -154,7 +158,7 @@ function Desktop({ isOverlayOpen }: Props) {
     </div>
   )
 }
-function Overlay({ isOverlayOpen }: Props) {
+function Overlay({ isOverlayOpen, setIsOverlayOpen }: Props) {
   return (
     <div
       className={clsx(
@@ -162,8 +166,8 @@ function Overlay({ isOverlayOpen }: Props) {
         'fixed inset-0 z-10 bg-black duration-500'
       )}
     >
-      <Mobile isOverlayOpen={isOverlayOpen} />
-      <Desktop isOverlayOpen={isOverlayOpen} />
+      <Mobile isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
+      <Desktop isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
     </div>
   )
 }

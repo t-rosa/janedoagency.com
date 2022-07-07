@@ -12,7 +12,7 @@ function Layout({ children }: Props) {
 
   return (
     <>
-      <Overlay isOverlayOpen={isOverlayOpen}/>
+      <Overlay isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
       <Header isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
       {children}
       <Footer />

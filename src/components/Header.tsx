@@ -52,7 +52,7 @@ function Mobile({ isOverlayOpen, setIsOverlayOpen }: Props) {
     <div className='ml-3 flex h-full justify-between lg:hidden'>
       <nav className='flex items-center'>
         <Link href='/'>
-          <a>
+          <a onClick={() => isOverlayOpen && setIsOverlayOpen(false)}>
             <Logo withText />
           </a>
         </Link>
@@ -83,7 +83,7 @@ function Desktop({ isOverlayOpen, setIsOverlayOpen }: Props) {
     <div className='ml-10 hidden h-full grid-cols-[auto_10rem] gap-10 lg:grid'>
       <nav className='col-[1/2] flex items-center justify-between'>
         <Link href='/'>
-          <a>
+          <a onClick={() => isOverlayOpen && setIsOverlayOpen(false)}>
             <Logo withText />
           </a>
         </Link>
