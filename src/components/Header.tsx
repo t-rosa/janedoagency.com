@@ -62,7 +62,7 @@ function Mobile({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
                   setVinylText(homeVinylText)
                 }, 1500)
               } else {
-                setIsOverlayOpen(false)
+                setVinylText(homeVinylText)
               }
             }}
           >
@@ -104,7 +104,7 @@ function Desktop({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
                   setVinylText(homeVinylText)
                 }, 1500)
               } else {
-                setIsOverlayOpen(false)
+                setVinylText(homeVinylText)
               }
             }}
           >
