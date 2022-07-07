@@ -40,7 +40,7 @@ function Tablet() {
           className='opacity-50 mix-blend-lighten'
           alt='Image de fond de la section principale'
           width={640}
-          height={760}
+          height={984}
         />
       </div>
       <div className='absolute inset-0 flex items-center px-5'>
