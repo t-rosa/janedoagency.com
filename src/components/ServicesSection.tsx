@@ -56,16 +56,14 @@ function Mobile() {
     <GlassContainer className='px-10 py-24 sm:hidden'>
       <ul className='grid gap-12'>
         {SERVICES.map((service) => (
-          <Fragment key={service.id}>
-            <li className='grid place-items-center gap-6'>
-              <Image src={service.logo} alt={service.label} width={60} height={60} />
-              <h2 className='mx-auto max-w-[13rem] text-center font-display text-2xl font-bold capitalize'>
-                {service.label}
-              </h2>
-              <p className='max-w-xs text-center text-lg font-light'>{service.text}</p>
-            </li>
+          <li key={service.id} className='grid place-items-center gap-6'>
+            <Image src={service.logo} alt={service.label} width={60} height={60} />
+            <h2 className='mx-auto max-w-[13rem] text-center font-display text-2xl font-bold capitalize'>
+              {service.label}
+            </h2>
+            <p className='max-w-xs text-center text-lg font-light'>{service.text}</p>
             {service.id !== 6 && <div className='mx-auto h-14 w-[1px] bg-zinc-100' />}
-          </Fragment>
+          </li>
         ))}
       </ul>
     </GlassContainer>
@@ -85,7 +83,11 @@ function Tablet() {
               </h2>
               <p className='text max-w-xs text-center text-lg font-light'>{service.text}</p>
             </li>
-            {index % 2 === 0 && <div className='h-[1px] w-10 bg-zinc-100' />}
+            {index % 2 === 0 && (
+              <li>
+                <div className='h-[1px] w-10 bg-zinc-100' />
+              </li>
+            )}
           </Fragment>
         ))}
       </ul>
