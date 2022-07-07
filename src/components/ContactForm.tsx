@@ -1,42 +1,94 @@
 import { Switch } from '@headlessui/react'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
 
+const schema = z.object({
+  firstName: z
+    .string({
+      required_error: 'Merci de renseigner votre prénom.',
+      invalid_type_error: "Merci d'utiliser une chaine de caractères.",
+    })
+    .min(1)
+    .max(50, 'Le prénom doit faire moins de 50 caractères.'),
+  lastName: z
+    .string({
+      required_error: 'Merci de renseigner votre nom de famille.',
+      invalid_type_error: "Merci d'utiliser une chaine de caractères.",
+    })
+    .min(1)
+    .max(50, 'Le nom de famille doit faire moins de 50 caractères.'),
+  email: z.string().email({
+    message: 'Adresse e-mail invalide.',
+  }),
+  phone: z.string().length(10, 'Le numéro de téléphone doit faire exactement 10 caractères.'),
+  message: z
+    .string({
+      required_error: 'Merci de renseigner un message.',
+    })
+    .min(1)
+    .max(500, 'Le message ne peux pas contenir plus de 500 caractères.'),
+})
 function ContactForm() {
   const [agreed, setAgreed] = useState(false)
+  const agreedButton = useRef(null)
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm()
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      message: '',
+    },
+    resolver: zodResolver(schema),
+  })
 
   return (
-    <form className='grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'>
+    <form
+      onSubmit={handleSubmit((contactInfo: any) => {
+        if (agreed) {
+          alert('Email envoyé')
+          reset()
+        } else {
+          const currentAgreedButton: any = agreedButton.current
+          currentAgreedButton.focus()
+        }
+      })}
+      className='grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'
+    >
       <div>
-        <label htmlFor='first-name' className='block text-sm font-medium '>
+        <label htmlFor='firstName' className='block text-sm font-medium '>
           Prénom
         </label>
         <div className='mt-1'>
           <input
+            {...register('firstName')}
             type='text'
-            name='first-name'
-            id='first-name'
+            name='firstName'
+            id='firstName'
             autoComplete='given-name'
             className='block w-full border-zinc-300 bg-zinc-800 py-3 px-4 shadow-sm focus:border-hover focus:ring-hover '
           />
         </div>
       </div>
       <div>
-        <label htmlFor='last-name' className='block text-sm font-medium '>
+        <label htmlFor='lastName' className='block text-sm font-medium '>
           Nom
         </label>
         <div className='mt-1'>
           <input
+            {...register('lastName')}
             type='text'
-            name='last-name'
-            id='last-name'
+            name='lastName'
+            id='lastName'
             autoComplete='family-name'
             className='block w-full border-zinc-300 bg-zinc-800 py-3 px-4 shadow-sm focus:border-hover focus:ring-hover '
           />
@@ -48,6 +100,7 @@ function ContactForm() {
         </label>
         <div className='mt-1'>
           <input
+            {...register('email')}
             id='email'
             name='email'
             type='email'
@@ -57,14 +110,15 @@ function ContactForm() {
         </div>
       </div>
       <div className='sm:col-span-2'>
-        <label htmlFor='phone-number' className='block text-sm font-medium '>
+        <label htmlFor='phone' className='block text-sm font-medium '>
           Téléphone
         </label>
         <div className='relative mt-1 shadow-sm'>
           <input
+            {...register('phone')}
             type='text'
-            name='phone-number'
-            id='phone-number'
+            name='phone'
+            id='phone'
             autoComplete='tel'
             className='block w-full border-zinc-300 bg-zinc-800 py-3 px-4 focus:border-hover focus:ring-hover '
             placeholder='+33 6 10 20 30 40'
@@ -77,6 +131,7 @@ function ContactForm() {
         </label>
         <div className='mt-1'>
           <textarea
+            {...register('message')}
             id='message'
             name='message'
             rows={4}
@@ -89,6 +144,7 @@ function ContactForm() {
         <div className='flex items-start'>
           <div className='flex-shrink-0'>
             <Switch
+              ref={agreedButton}
               checked={agreed}
               onChange={setAgreed}
               className={clsx(
