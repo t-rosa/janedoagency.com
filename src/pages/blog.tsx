@@ -1,3 +1,4 @@
+import ComingSoon from 'components/ComingSoon'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
@@ -9,7 +10,9 @@ const Blog: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='flex flex-col pt-24'>blog</main>
+      <main className='flex flex-col pt-24'>
+        <ComingSoon />
+      </main>
     </>
   )
 }

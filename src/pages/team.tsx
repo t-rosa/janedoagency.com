@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import ComingSoon from 'components/ComingSoon'
 
 const Team: NextPage = () => {
   return (
@@ -9,7 +10,9 @@ const Team: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='flex flex-col pt-24'>équipe</main>
+      <main className='flex flex-col pt-24'>
+        <ComingSoon />
+      </main>
     </>
   )
 }
