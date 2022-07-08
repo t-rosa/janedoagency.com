@@ -57,24 +57,12 @@ const MENU = [
 ]
 
 function Layout({ children }: Props) {
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false)
   const [vinylText, setVinylText] = useState(homeVinylText)
 
   return (
     <>
-      <Overlay
-        MENU={MENU}
-        isOverlayOpen={isOverlayOpen}
-        setIsOverlayOpen={setIsOverlayOpen}
-        vinylText={vinylText}
-        setVinylText={setVinylText}
-      />
-      <Header
-        MENU={MENU}
-        isOverlayOpen={isOverlayOpen}
-        setIsOverlayOpen={setIsOverlayOpen}
-        setVinylText={setVinylText}
-      />
+      <Overlay MENU={MENU} vinylText={vinylText} setVinylText={setVinylText} />
+      <Header MENU={MENU} setVinylText={setVinylText} />
       {children}
       <Footer />
     </>

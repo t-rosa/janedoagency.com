@@ -4,23 +4,26 @@ import { Dispatch, SetStateAction } from 'react'
 import Logo from './Logo'
 
 import homeVinylText from 'images/vinyl/text/accueil.svg'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { closeOverlay, selectOverlay, toggleOverlay } from 'slices/overlay'
+import { useAppDispatch } from 'hooks/useAppDispatch'
 
 interface Props {
   MENU: any[]
-  isOverlayOpen: boolean
-  setIsOverlayOpen: Dispatch<SetStateAction<boolean>>
   setVinylText: Dispatch<SetStateAction<string>>
 }
 
-function Mobile({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
+function Mobile({ setVinylText }: Props) {
+  const overlay = useAppSelector(selectOverlay)
+  const dispatch = useAppDispatch()
   return (
     <div className='ml-3 flex h-full justify-between lg:hidden'>
       <nav className='flex items-center'>
         <Link href='/'>
           <a
             onClick={() => {
-              if (isOverlayOpen) {
-                setIsOverlayOpen(false)
+              if (overlay.isOpen) {
+                dispatch(closeOverlay())
                 setTimeout(() => {
                   setVinylText(homeVinylText)
                 }, 1500)
@@ -35,18 +38,18 @@ function Mobile({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
       </nav>
       <button
         aria-label='Ouvrir/Fermer le menu'
-        onClick={() => setIsOverlayOpen(!isOverlayOpen)}
+        onClick={() => dispatch(toggleOverlay())}
         className='grid w-36 place-items-center border-l'
       >
         <div
           className={clsx(
-            isOverlayOpen ? 'translate-y-4' : '-translate-y-2',
+            overlay.isOpen ? 'translate-y-4' : '-translate-y-2',
             'col-[1/2] row-[1/2] h-1 w-9/12 bg-white duration-500'
           )}
         />
         <div
           className={clsx(
-            isOverlayOpen ? '-translate-y-4' : 'translate-y-2',
+            overlay.isOpen ? '-translate-y-4' : 'translate-y-2',
             'col-[1/2] row-[1/2] h-1 w-9/12 bg-white duration-500'
           )}
         />
@@ -55,15 +58,17 @@ function Mobile({ isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
   )
 }
 
-function Desktop({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
+function Desktop({ MENU, setVinylText }: Props) {
+  const overlay = useAppSelector(selectOverlay)
+  const dispatch = useAppDispatch()
   return (
     <div className='ml-10 hidden h-full grid-cols-[auto_10rem] gap-10 lg:grid'>
       <nav className='col-[1/2] flex items-center justify-between'>
         <Link href='/'>
           <a
             onClick={() => {
-              if (isOverlayOpen) {
-                setIsOverlayOpen(false)
+              if (overlay.isOpen) {
+                dispatch(closeOverlay())
                 setTimeout(() => {
                   setVinylText(homeVinylText)
                 }, 1500)
@@ -76,7 +81,7 @@ function Desktop({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props)
           </a>
         </Link>
         <ul
-          className={clsx(isOverlayOpen ? 'opacity-0' : 'opacity-100', 'flex gap-5 duration-500')}
+          className={clsx(overlay.isOpen ? 'opacity-0' : 'opacity-100', 'flex gap-5 duration-500')}
         >
           {MENU.map((item) => (
             <li key={item.id}>
@@ -95,18 +100,18 @@ function Desktop({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props)
       </nav>
       <button
         aria-label='Ouvrir/Fermer le menu'
-        onClick={() => setIsOverlayOpen(!isOverlayOpen)}
+        onClick={() => dispatch(toggleOverlay())}
         className='col-[2/3] grid place-items-center border-l'
       >
         <div
           className={clsx(
-            isOverlayOpen ? 'translate-y-4' : '-translate-y-2',
+            overlay.isOpen ? 'translate-y-4' : '-translate-y-2',
             'col-[1/2] row-[1/2] h-1 w-9/12 bg-white duration-500'
           )}
         />
         <div
           className={clsx(
-            isOverlayOpen ? '-translate-y-4' : 'translate-y-2',
+            overlay.isOpen ? '-translate-y-4' : 'translate-y-2',
             'col-[1/2] row-[1/2] h-1 w-9/12 bg-white duration-500'
           )}
         />
@@ -115,26 +120,17 @@ function Desktop({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props)
   )
 }
 
-function Header({ MENU, isOverlayOpen, setIsOverlayOpen, setVinylText }: Props) {
+function Header({ MENU, setVinylText }: Props) {
+  const overlay = useAppSelector(selectOverlay)
   return (
     <header
       className={clsx(
-        isOverlayOpen ? 'bg-black' : 'bg-zinc-900 transition-colors delay-[1700ms] ease-linear',
+        overlay.isOpen ? 'bg-black' : 'bg-zinc-900 transition-colors delay-[1700ms] ease-linear',
         'fixed inset-x-0 z-10 h-24 border-b'
       )}
     >
-      <Mobile
-        MENU={MENU}
-        isOverlayOpen={isOverlayOpen}
-        setIsOverlayOpen={setIsOverlayOpen}
-        setVinylText={setVinylText}
-      />
-      <Desktop
-        MENU={MENU}
-        isOverlayOpen={isOverlayOpen}
-        setIsOverlayOpen={setIsOverlayOpen}
-        setVinylText={setVinylText}
-      />
+      <Mobile MENU={MENU} setVinylText={setVinylText} />
+      <Desktop MENU={MENU} setVinylText={setVinylText} />
     </header>
   )
 }
