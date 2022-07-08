@@ -39,7 +39,7 @@ function ContactForm() {
   const [agreed, setAgreed] = useState(false)
   const [open, setOpen] = useState(false)
   const [title, setTitle] = useState('Email envoyé avec succès')
-  const [type, setType] = useState('success')
+  const [type, setType] = useState<'success' | 'error' | 'info'>('success')
   const agreedButton = useRef(null)
   const {
     register,
@@ -60,7 +60,7 @@ function ContactForm() {
   function onSubmit(data: any) {
     if (agreed) {
       axios
-        .post('/api/contacts', data)
+        .post('/api/contact', data)
         .then(() => {
           setType('success')
           setTitle('Email envoyé avec succès')
