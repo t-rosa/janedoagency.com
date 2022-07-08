@@ -1,3 +1,5 @@
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { useAppSelector } from 'hooks/useAppSelector'
 import facebook from 'images/networks/facebook.svg'
 import instagram from 'images/networks/instagram.svg'
 import linkedin from 'images/networks/linkedin.svg'
@@ -6,6 +8,7 @@ import twitter from 'images/networks/twitter.svg'
 import youtube from 'images/networks/youtube.svg'
 import Image from 'next/future/image'
 import Link from 'next/link'
+import { selectNavigationMenu, synchronizeCurrentPage } from 'slices/navigation'
 import Logo from './Logo'
 
 const SERVICES = [
@@ -48,7 +51,7 @@ const CONDITIONS = [
     url: '/privacy-policy',
   },
   {
-    id: 3,
+    id: 2,
     label: 'formulaire de contact',
     url: '/contact',
   },
@@ -93,6 +96,8 @@ const SOCIALS = [
   },
 ]
 function Mobile() {
+  const navigationMenu = useAppSelector(selectNavigationMenu)
+  const dispatch = useAppDispatch()
   return (
     <div className='grid place-items-center gap-6 py-10 md:hidden'>
       <div>
@@ -102,7 +107,14 @@ function Mobile() {
             {SERVICES.map((service) => (
               <li key={service.id}>
                 <Link href={service.url}>
-                  <a className='capitalize hover:text-hover'>{service.label}</a>
+                  <a
+                    onClick={() => {
+                      dispatch(synchronizeCurrentPage(navigationMenu.at(1)))
+                    }}
+                    className='capitalize hover:text-hover'
+                  >
+                    {service.label}
+                  </a>
                 </Link>
               </li>
             ))}
@@ -116,7 +128,14 @@ function Mobile() {
             {CONDITIONS.map((condition) => (
               <li key={condition.id}>
                 <Link href={condition.url}>
-                  <a className='capitalize hover:text-hover'>{condition.label}</a>
+                  <a
+                    onClick={() => {
+                      condition.id === 2 && dispatch(synchronizeCurrentPage(navigationMenu.at(4)))
+                    }}
+                    className='capitalize hover:text-hover'
+                  >
+                    {condition.label}
+                  </a>
                 </Link>
               </li>
             ))}
@@ -149,6 +168,8 @@ function Mobile() {
 }
 
 function Tablet() {
+  const navigationMenu = useAppSelector(selectNavigationMenu)
+  const dispatch = useAppDispatch()
   return (
     <div className='hidden grid-cols-2 place-items-center gap-6 py-10 md:grid lg:hidden'>
       <div>
@@ -158,7 +179,14 @@ function Tablet() {
             {SERVICES.map((service) => (
               <li key={service.id}>
                 <Link href={service.url}>
-                  <a className='capitalize hover:text-hover'>{service.label}</a>
+                  <a
+                    onClick={() => {
+                      dispatch(synchronizeCurrentPage(navigationMenu.at(1)))
+                    }}
+                    className='capitalize hover:text-hover'
+                  >
+                    {service.label}
+                  </a>
                 </Link>
               </li>
             ))}
@@ -172,7 +200,14 @@ function Tablet() {
             {CONDITIONS.map((condition) => (
               <li key={condition.id}>
                 <Link href={condition.url}>
-                  <a className='capitalize hover:text-hover'>{condition.label}</a>
+                  <a
+                    onClick={() => {
+                      condition.id === 2 && dispatch(synchronizeCurrentPage(navigationMenu.at(4)))
+                    }}
+                    className='capitalize hover:text-hover'
+                  >
+                    {condition.label}
+                  </a>
                 </Link>
               </li>
             ))}
@@ -204,6 +239,9 @@ function Tablet() {
   )
 }
 function Desktop() {
+  const navigationMenu = useAppSelector(selectNavigationMenu)
+  const dispatch = useAppDispatch()
+
   return (
     <div className='hidden grid-cols-4 place-items-center gap-6 py-10 lg:grid'>
       <div>
@@ -213,7 +251,14 @@ function Desktop() {
             {SERVICES.map((service) => (
               <li key={service.id}>
                 <Link href={service.url}>
-                  <a className='capitalize hover:text-hover'>{service.label}</a>
+                  <a
+                    onClick={() => {
+                      dispatch(synchronizeCurrentPage(navigationMenu.at(1)))
+                    }}
+                    className='capitalize hover:text-hover'
+                  >
+                    {service.label}
+                  </a>
                 </Link>
               </li>
             ))}
@@ -227,7 +272,14 @@ function Desktop() {
             {CONDITIONS.map((condition) => (
               <li key={condition.id}>
                 <Link href={condition.url}>
-                  <a className='capitalize hover:text-hover'>{condition.label}</a>
+                  <a
+                    onClick={() => {
+                      condition.id === 2 && dispatch(synchronizeCurrentPage(navigationMenu.at(4)))
+                    }}
+                    className='capitalize hover:text-hover'
+                  >
+                    {condition.label}
+                  </a>
                 </Link>
               </li>
             ))}

@@ -1,10 +1,15 @@
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { useAppSelector } from 'hooks/useAppSelector'
 import desktopBackground from 'images/home/join-desktop-bg.webp'
 import mobileBackground from 'images/home/join-mobile-bg.webp'
 import tabletBackground from 'images/home/join-tablet-bg.webp'
 import Image from 'next/future/image'
 import Link from 'next/link'
+import { selectNavigationMenu, synchronizeCurrentPage } from 'slices/navigation'
 
 function Mobile() {
+  const navigation = useAppSelector(selectNavigationMenu)
+  const dispatch = useAppDispatch()
   return (
     <div className='sm:hidden'>
       <Image
@@ -23,7 +28,10 @@ function Mobile() {
           votre écoute !
         </p>
         <Link href='/contact'>
-          <a className='border py-2 px-4 font-display text-xl font-bold uppercase'>
+          <a
+            onClick={() => dispatch(synchronizeCurrentPage(navigation.at(4)))}
+            className='border py-2 px-4 font-display text-xl font-bold uppercase'
+          >
             nous contacter
           </a>
         </Link>
@@ -33,6 +41,8 @@ function Mobile() {
 }
 
 function Tablet() {
+  const navigation = useAppSelector(selectNavigationMenu)
+  const dispatch = useAppDispatch()
   return (
     <div className='hidden sm:block xl:hidden'>
       <div className='flex justify-end'>
@@ -54,7 +64,10 @@ function Tablet() {
             que nos différents réseaux.
           </p>
           <Link href='/contact'>
-            <a className='w-fit self-start border py-3 px-6 font-display text-3xl font-bold uppercase hover:border-hover hover:text-hover lg:py-4 lg:px-8 lg:text-4xl'>
+            <a
+              onClick={() => dispatch(synchronizeCurrentPage(navigation.at(4)))}
+              className='w-fit self-start border py-3 px-6 font-display text-3xl font-bold uppercase hover:border-hover hover:text-hover lg:py-4 lg:px-8 lg:text-4xl'
+            >
               nous contacter
             </a>
           </Link>
@@ -65,6 +78,9 @@ function Tablet() {
 }
 
 function Desktop() {
+  const navigation = useAppSelector(selectNavigationMenu)
+  const dispatch = useAppDispatch()
+
   return (
     <div className='hidden xl:block'>
       <div className='flex justify-end'>
@@ -85,7 +101,10 @@ function Desktop() {
             place, qu’importe votre style !
           </p>
           <Link href='/contact'>
-            <a className='w-fit self-start border py-4 px-8 font-display text-4xl font-bold uppercase hover:border-hover hover:text-hover'>
+            <a
+              onClick={() => dispatch(synchronizeCurrentPage(navigation.at(4)))}
+              className='w-fit self-start border py-4 px-8 font-display text-4xl font-bold uppercase hover:border-hover hover:text-hover'
+            >
               nous contacter
             </a>
           </Link>
