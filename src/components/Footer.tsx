@@ -12,32 +12,32 @@ const SERVICES = [
   {
     id: 1,
     label: 'communication graphique',
-    url: '#',
+    url: '/services#graphical',
   },
   {
     id: 2,
     label: 'communication digitale',
-    url: '#',
+    url: '/services#digital',
   },
   {
     id: 3,
     label: 'relation presse',
-    url: '#',
+    url: '/services#press',
   },
   {
     id: 4,
     label: 'booking et démarchage',
-    url: '#',
+    url: '/services#booking',
   },
   {
     id: 5,
     label: 'marketing hors média',
-    url: '#',
+    url: '/services#maketing',
   },
   {
     id: 6,
     label: 'interview et podcast',
-    url: '#',
+    url: '/services#interview',
   },
 ]
 
@@ -45,15 +45,10 @@ const CONDITIONS = [
   {
     id: 1,
     label: 'politique de confidentialité',
-    url: '#',
+    url: '/privacy-policy',
   },
   {
-    id: 2,
-    label: 'cookies',
-    url: '#',
-  },
-  {
-    id: 4,
+    id: 3,
     label: 'formulaire de contact',
     url: '/contact',
   },

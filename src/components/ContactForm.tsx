@@ -164,15 +164,10 @@ function ContactForm() {
           </div>
           <div className='ml-3'>
             <p className='text-base text-zinc-400'>
-              En sélectionnant ceci, vous acceptez les{' '}
-              <Link href='#'>
+              En sélectionnant ceci, vous acceptez les&nbsp;
+              <Link href='/privacy-policy'>
                 <a className='font-medium text-hover underline'>politiques de confidentialité</a>
-              </Link>{' '}
-              et les{' '}
-              <Link href='#'>
-                <a className='font-medium text-hover underline'>politique relative aux cookies</a>
               </Link>
-              .
             </p>
           </div>
         </div>

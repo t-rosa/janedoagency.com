@@ -10,7 +10,6 @@ export default function Document() {
         />
         <meta charSet='UTF-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-        <link rel='preload' as='font' />
         <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon' />
       </Head>
       <body>
