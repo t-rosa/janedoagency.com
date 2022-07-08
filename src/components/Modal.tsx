@@ -1,18 +1,18 @@
-import { Dispatch, Fragment, SetStateAction, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon, InformationCircleIcon, XIcon } from '@heroicons/react/outline'
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { Fragment } from 'react'
+import { closeModal, selectModal } from 'slices/modal'
+import LoadingIcon from './LoadingIcon'
 
-interface Props {
-  title: string
-  message?: string
-  type: 'success' | 'error' | 'info'
-  open: boolean
-  setOpen: Dispatch<SetStateAction<boolean>>
-}
-function Modal({ title, message, type, open, setOpen }: Props) {
+function Modal() {
+  const modal = useAppSelector(selectModal)
+  const dispatch = useAppDispatch()
+
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as='div' className='relative z-10' onClose={setOpen}>
+    <Transition.Root show={modal.isOpen} as={Fragment}>
+      <Dialog as='div' className='relative z-10' onClose={() => dispatch(closeModal())}>
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'
@@ -39,33 +39,34 @@ function Modal({ title, message, type, open, setOpen }: Props) {
               <Dialog.Panel className='relative transform overflow-hidden border bg-zinc-800 px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6'>
                 <div>
                   <div className='mx-auto flex h-12 w-12 items-center justify-center rounded-full border bg-zinc-100'>
-                    {type === 'success' && (
+                    {modal.type === 'success' && (
                       <CheckIcon className='text-bold h-8 w-8 text-hover' aria-hidden='true' />
                     )}
-                    {type === 'error' && (
+                    {modal.type === 'error' && (
                       <XIcon className='text-bold h-8 w-8 text-hover' aria-hidden='true' />
                     )}
-                    {type === 'info' && (
+                    {modal.type === 'info' && (
                       <InformationCircleIcon
                         className='text-bold h-8 w-8 text-hover'
                         aria-hidden='true'
                       />
                     )}
+                    {modal.type === 'loading' && <LoadingIcon />}
                   </div>
                   <div className='mt-3 text-center sm:mt-5'>
                     <Dialog.Title as='h3' className='text-lg font-medium leading-6'>
-                      {title}
+                      {modal.title}
                     </Dialog.Title>
                     <div className='mt-2'>
-                      <p className='text-sm text-gray-500'>{message}</p>
+                      <p className='text-sm text-gray-500'>{modal.message}</p>
                     </div>
                   </div>
                 </div>
                 <div className='mt-5 sm:mt-6'>
                   <button
                     type='button'
-                    className='inline-flex w-full justify-center border px-4 py-2 font-display text-base font-bold font-medium uppercase text-white shadow-sm hover:border-hover hover:text-hover sm:text-sm'
-                    onClick={() => setOpen(false)}
+                    className='inline-flex w-full justify-center border px-4 py-2 font-display text-base font-bold  uppercase text-white shadow-sm hover:border-hover hover:text-hover sm:text-sm'
+                    onClick={() => dispatch(closeModal())}
                   >
                     fermer
                   </button>
