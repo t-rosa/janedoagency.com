@@ -5,15 +5,16 @@ import vinyl from 'images/vinyl/vinyl.webp'
 import Image from 'next/future/image'
 import Link from 'next/link'
 import { Dispatch, SetStateAction } from 'react'
+import { selectNavigationMenu } from 'slices/navigation'
 import { closeOverlay, selectOverlay } from 'slices/overlay'
 
 interface Props {
-  MENU: any[]
   vinylText: string
   setVinylText: Dispatch<SetStateAction<string>>
 }
-function Mobile({ MENU, vinylText, setVinylText }: Props) {
+function Mobile({ vinylText, setVinylText }: Props) {
   const overlay = useAppSelector(selectOverlay)
+  const menu = useAppSelector(selectNavigationMenu)
   const dispatch = useAppDispatch()
   return (
     <div
@@ -24,7 +25,7 @@ function Mobile({ MENU, vinylText, setVinylText }: Props) {
     >
       <nav className='z-10 mx-auto'>
         <ul className='grid gap-6'>
-          {MENU.map((item) => (
+          {menu.map((item) => (
             <li key={item.id} className='overflow-y-hidden'>
               <Link href={item.url}>
                 <a
@@ -71,9 +72,11 @@ function Mobile({ MENU, vinylText, setVinylText }: Props) {
     </div>
   )
 }
-function Desktop({ MENU, vinylText, setVinylText }: Props) {
+function Desktop({ vinylText, setVinylText }: Props) {
   const overlay = useAppSelector(selectOverlay)
+  const menu = useAppSelector(selectNavigationMenu)
   const dispatch = useAppDispatch()
+
   return (
     <div
       className={clsx(
@@ -83,7 +86,7 @@ function Desktop({ MENU, vinylText, setVinylText }: Props) {
     >
       <nav className='relative z-10 grid h-full place-items-center bg-black'>
         <ul className='grid gap-6'>
-          {MENU.map((item) => (
+          {menu.map((item) => (
             <li key={item.id} className='overflow-y-hidden'>
               <Link href={item.url}>
                 <a
@@ -139,7 +142,7 @@ function Desktop({ MENU, vinylText, setVinylText }: Props) {
   )
 }
 
-function Overlay({ MENU, vinylText, setVinylText }: Props) {
+function Overlay({ vinylText, setVinylText }: Props) {
   const overlay = useAppSelector(selectOverlay)
   return (
     <div
@@ -148,8 +151,8 @@ function Overlay({ MENU, vinylText, setVinylText }: Props) {
         'fixed inset-0 z-10 bg-black duration-500'
       )}
     >
-      <Mobile MENU={MENU} vinylText={vinylText} setVinylText={setVinylText} />
-      <Desktop MENU={MENU} vinylText={vinylText} setVinylText={setVinylText} />
+      <Mobile vinylText={vinylText} setVinylText={setVinylText} />
+      <Desktop vinylText={vinylText} setVinylText={setVinylText} />
     </div>
   )
 }

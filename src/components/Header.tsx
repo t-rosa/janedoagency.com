@@ -7,9 +7,9 @@ import homeVinylText from 'images/vinyl/text/accueil.svg'
 import { useAppSelector } from 'hooks/useAppSelector'
 import { closeOverlay, selectOverlay, toggleOverlay } from 'slices/overlay'
 import { useAppDispatch } from 'hooks/useAppDispatch'
+import { selectNavigationMenu } from 'slices/navigation'
 
 interface Props {
-  MENU: any[]
   setVinylText: Dispatch<SetStateAction<string>>
 }
 
@@ -58,8 +58,9 @@ function Mobile({ setVinylText }: Props) {
   )
 }
 
-function Desktop({ MENU, setVinylText }: Props) {
+function Desktop({ setVinylText }: Props) {
   const overlay = useAppSelector(selectOverlay)
+  const menu = useAppSelector(selectNavigationMenu)
   const dispatch = useAppDispatch()
   return (
     <div className='ml-10 hidden h-full grid-cols-[auto_10rem] gap-10 lg:grid'>
@@ -83,7 +84,7 @@ function Desktop({ MENU, setVinylText }: Props) {
         <ul
           className={clsx(overlay.isOpen ? 'opacity-0' : 'opacity-100', 'flex gap-5 duration-500')}
         >
-          {MENU.map((item) => (
+          {menu.map((item) => (
             <li key={item.id}>
               <Link href={item.url}>
                 <a
@@ -120,7 +121,7 @@ function Desktop({ MENU, setVinylText }: Props) {
   )
 }
 
-function Header({ MENU, setVinylText }: Props) {
+function Header({ setVinylText }: Props) {
   const overlay = useAppSelector(selectOverlay)
   return (
     <header
@@ -129,8 +130,8 @@ function Header({ MENU, setVinylText }: Props) {
         'fixed inset-x-0 z-10 h-24 border-b'
       )}
     >
-      <Mobile MENU={MENU} setVinylText={setVinylText} />
-      <Desktop MENU={MENU} setVinylText={setVinylText} />
+      <Mobile setVinylText={setVinylText} />
+      <Desktop setVinylText={setVinylText} />
     </header>
   )
 }
