@@ -61,7 +61,7 @@ function ContactForm() {
           setTitle('Email envoyé avec succès')
           setOpen(true)
           setAgreed(false)
-          reset()
+          form.reset()
         })
         .catch((error) => {
           setType('error')
