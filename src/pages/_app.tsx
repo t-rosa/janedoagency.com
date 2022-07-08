@@ -1,8 +1,8 @@
-import 'styles/globals.css'
-import type { AppProps } from 'next/app'
 import Layout from 'components/Layout'
+import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { store } from 'store'
+import 'styles/globals.css'
 
 function App({ Component, pageProps }: AppProps) {
   return (

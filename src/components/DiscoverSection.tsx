@@ -78,7 +78,7 @@ function Desktop() {
 }
 function DiscoverSection() {
   return (
-    <section id='discover' className='relative'>
+    <section id='discover' className=' relative'>
       <Mobile />
       <Tablet />
       <Desktop />

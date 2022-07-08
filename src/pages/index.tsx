@@ -1,7 +1,7 @@
-import MainSection from 'components/MainSection'
 import DiscoverSection from 'components/DiscoverSection'
-import ServicesSection from 'components/ServicesSection'
 import JoinSection from 'components/JoinSection'
+import MainSection from 'components/MainSection'
+import ServicesSection from 'components/ServicesSection'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 

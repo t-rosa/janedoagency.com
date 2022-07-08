@@ -48,7 +48,16 @@ const SERVICES = [
 ]
 
 function GlassContainer({ children, className }: { children: ReactNode; className?: string }) {
-  return <div className={clsx('bg-gray-400 bg-opacity-10', className)}>{children}</div>
+  return (
+    <div
+      className={clsx(
+        'border-y bg-[url("/services-pattern.webp")] mix-blend-plus-lighter',
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
 }
 
 function Mobile() {
