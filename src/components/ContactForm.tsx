@@ -55,7 +55,7 @@ function ContactForm() {
 
   return (
     <>
-      <Modal open={open} setOpen={setOpen} title={'Email envoyé avec succès'} />
+      <Modal type='success' open={open} setOpen={setOpen} title={'Email envoyé avec succès'} />
       <form
         onSubmit={handleSubmit((contactInfo: any) => {
           if (agreed) {

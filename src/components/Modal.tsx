@@ -1,14 +1,15 @@
 import { Dispatch, Fragment, SetStateAction, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/outline'
+import { CheckIcon, InformationCircleIcon, XIcon } from '@heroicons/react/outline'
 
 interface Props {
   title: string
   message?: string
+  type: 'success' | 'error' | 'info'
   open: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
 }
-function Modal({ title, message, open, setOpen }: Props) {
+function Modal({ title, message, type, open, setOpen }: Props) {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as='div' className='relative z-10' onClose={setOpen}>
@@ -38,7 +39,18 @@ function Modal({ title, message, open, setOpen }: Props) {
               <Dialog.Panel className='relative transform overflow-hidden border bg-zinc-800 px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6'>
                 <div>
                   <div className='mx-auto flex h-12 w-12 items-center justify-center rounded-full border bg-zinc-100'>
-                    <CheckIcon className='text-bold h-8 w-8 text-hover' aria-hidden='true' />
+                    {type === 'success' && (
+                      <CheckIcon className='text-bold h-8 w-8 text-hover' aria-hidden='true' />
+                    )}
+                    {type === 'error' && (
+                      <XIcon className='text-bold h-8 w-8 text-hover' aria-hidden='true' />
+                    )}
+                    {type === 'info' && (
+                      <InformationCircleIcon
+                        className='text-bold h-8 w-8 text-hover'
+                        aria-hidden='true'
+                      />
+                    )}
                   </div>
                   <div className='mt-3 text-center sm:mt-5'>
                     <Dialog.Title as='h3' className='text-lg font-medium leading-6'>
