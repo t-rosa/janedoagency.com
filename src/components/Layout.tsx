@@ -15,7 +15,7 @@ function Layout({ children }: Props) {
       <Modal />
       <Overlay />
       <Header />
-      {children}
+      <div className='bg-[url("/main-pattern.webp")]'>{children}</div>
       <Footer />
     </>
   )

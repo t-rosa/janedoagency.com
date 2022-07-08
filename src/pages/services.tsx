@@ -10,7 +10,7 @@ const Services: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='flex flex-col bg-[url("/services-pattern.webp")] pt-24 mix-blend-screen'>
+      <main className='flex flex-col pt-24'>
         <ComingSoon />
       </main>
     </>

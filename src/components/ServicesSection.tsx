@@ -49,7 +49,9 @@ const SERVICES = [
 
 function GlassContainer({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={clsx('border-y bg-[url("/pattern.webp")] mix-blend-screen', className)}>
+    <div
+      className={clsx('border-y bg-[url("/services-pattern.webp")] mix-blend-plus-lighter', className)}
+    >
       {children}
     </div>
   )
