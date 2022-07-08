@@ -6,14 +6,14 @@ function ComingSoon() {
   return (
     <section className='grid place-items-center p-5 mix-blend-lighten'>
       <Image
-        src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318250/vinyl_rbvbbx.webp'
+        src={vinyl}
         alt='Vinyle'
         width={800}
         height={800}
         className='col-[1/2] row-[1/2] animate-spin-vinyl'
       />
       <Image
-        src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318248/coming-soon_kcjada.svg'
+        src={comingSoonVinylText}
         alt='Coming soon'
         width={800}
         height={800}

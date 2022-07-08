@@ -1,3 +1,6 @@
+import desktopBackground from 'images/home/main-desktop-bg.webp'
+import mobileBackground from 'images/home/main-mobile-bg.webp'
+import tabletBackground from 'images/home/main-tablet-bg.webp'
 import Image from 'next/future/image'
 import Link from 'next/link'
 
@@ -5,7 +8,7 @@ function Mobile() {
   return (
     <div className='sm:hidden'>
       <Image
-        src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318245/main-mobile-bg_kxtpwk.webp'
+        src={mobileBackground}
         className='opacity-50 mix-blend-lighten'
         alt='Image de fond de la section principale'
         width={640}
@@ -33,7 +36,7 @@ function Tablet() {
     <div className='hidden sm:block xl:hidden'>
       <div className='flex justify-end'>
         <Image
-          src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318244/main-tablet-bg_mlbwuw.webp'
+          src={tabletBackground}
           className='opacity-50 mix-blend-lighten'
           alt='Image de fond de la section principale'
           width={640}
@@ -66,7 +69,7 @@ function Desktop() {
     <div className='hidden xl:block'>
       <div className='flex justify-end'>
         <Image
-          src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318243/main-desktop-bg_by8eyf.webp'
+          src={desktopBackground}
           className='mix-blend-lighten'
           alt='Image de fond de la section principale'
           width={800}

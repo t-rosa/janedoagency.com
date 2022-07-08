@@ -1,4 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
+import blogVinylText from 'images/vinyl/text/blog.svg'
+import contactVinylText from 'images/vinyl/text/contact.svg'
+import teamVinylText from 'images/vinyl/text/equipe.svg'
+import achievementsVinylText from 'images/vinyl/text/realisations.svg'
+import servicesVinylText from 'images/vinyl/text/services.svg'
+import homeVinylText from 'images/vinyl/text/accueil.svg'
 import type { RootState } from 'store'
 
 type Page = {
@@ -23,8 +29,7 @@ const initialState: NavigationState = {
     url: '/',
     delayIn: '',
     delayOut: '',
-    vinylText:
-      'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318248/accueil_juyrqb.svg',
+    vinylText: homeVinylText,
   },
   menu: [
     {
@@ -33,8 +38,7 @@ const initialState: NavigationState = {
       url: '/team',
       delayIn: 'delay-300',
       delayOut: 'delay-600',
-      vinylText:
-        'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318249/equipe_wpe5z4.svg',
+      vinylText: teamVinylText,
     },
     {
       id: 2,
@@ -42,8 +46,7 @@ const initialState: NavigationState = {
       url: '/services',
       delayIn: 'delay-400',
       delayOut: 'delay-700',
-      vinylText:
-        'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657319234/services_ryo3co.svg',
+      vinylText: servicesVinylText,
     },
     {
       id: 3,
@@ -51,8 +54,7 @@ const initialState: NavigationState = {
       url: '/achievements',
       delayIn: 'delay-500',
       delayOut: 'delay-800',
-      vinylText:
-        'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318250/realisations_ypzpnh.svg',
+      vinylText: achievementsVinylText,
     },
     {
       id: 4,
@@ -60,8 +62,7 @@ const initialState: NavigationState = {
       url: '/blog',
       delayIn: 'delay-600',
       delayOut: 'delay-900',
-      vinylText:
-        'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318247/blog_vakxij.svg',
+      vinylText: blogVinylText,
     },
     {
       id: 5,
@@ -69,8 +70,7 @@ const initialState: NavigationState = {
       url: '/contact',
       delayIn: 'delay-700',
       delayOut: 'delay-1000',
-      vinylText:
-        'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318248/contact_dlp8wx.svg',
+      vinylText: contactVinylText,
     },
   ],
   currentPage: {
@@ -79,8 +79,7 @@ const initialState: NavigationState = {
     url: '/',
     delayIn: '',
     delayOut: '',
-    vinylText:
-      'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318248/accueil_juyrqb.svg',
+    vinylText: homeVinylText,
   },
 }
 

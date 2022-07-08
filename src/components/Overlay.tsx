@@ -1,10 +1,17 @@
 import clsx from 'clsx'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { useAppSelector } from 'hooks/useAppSelector'
+import vinyl from 'images/vinyl/vinyl.webp'
 import Image from 'next/future/image'
 import Link from 'next/link'
+import { Dispatch, SetStateAction } from 'react'
 import { selectCurrentPage, selectNavigationMenu, synchronizeCurrentPage } from 'slices/navigation'
 import { closeOverlay, selectOverlay } from 'slices/overlay'
+
+interface Props {
+  vinylText: string
+  setVinylText: Dispatch<SetStateAction<string>>
+}
 
 function Mobile() {
   const overlay = useAppSelector(selectOverlay)
@@ -51,7 +58,7 @@ function Mobile() {
         )}
       >
         <Image
-          src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318250/vinyl_rbvbbx.webp'
+          src={vinyl}
           alt=''
           className='col-[1/2] row-[1/2] animate-spin-vinyl'
           width={500}
@@ -121,7 +128,7 @@ function Desktop() {
         )}
       >
         <Image
-          src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318250/vinyl_rbvbbx.webp'
+          src={vinyl}
           alt=''
           className='col-[1/2] row-[1/2] animate-spin-vinyl'
           width={800}
