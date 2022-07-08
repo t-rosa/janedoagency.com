@@ -2,7 +2,7 @@ import { Switch } from '@headlessui/react'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, useFormState } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import Modal from './Modal'
@@ -41,12 +41,7 @@ function ContactForm() {
   const [title, setTitle] = useState('Email envoyé avec succès')
   const [type, setType] = useState<'success' | 'error' | 'info'>('success')
   const agreedButton = useRef(null)
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
+  const form = useForm({
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -83,7 +78,7 @@ function ContactForm() {
     <>
       <Modal type={type} open={open} setOpen={setOpen} title={title} />
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(onSubmit)}
         className='grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'
       >
         <div>
@@ -92,7 +87,7 @@ function ContactForm() {
           </label>
           <div className='mt-1'>
             <input
-              {...register('firstName')}
+              {...form.register('firstName')}
               type='text'
               name='firstName'
               id='firstName'
@@ -107,7 +102,7 @@ function ContactForm() {
           </label>
           <div className='mt-1'>
             <input
-              {...register('lastName')}
+              {...form.register('lastName')}
               type='text'
               name='lastName'
               id='lastName'
@@ -122,7 +117,7 @@ function ContactForm() {
           </label>
           <div className='mt-1'>
             <input
-              {...register('email')}
+              {...form.register('email')}
               id='email'
               name='email'
               type='email'
@@ -137,7 +132,7 @@ function ContactForm() {
           </label>
           <div className='relative mt-1 shadow-sm'>
             <input
-              {...register('phone')}
+              {...form.register('phone')}
               type='text'
               name='phone'
               id='phone'
@@ -153,7 +148,7 @@ function ContactForm() {
           </label>
           <div className='mt-1'>
             <textarea
-              {...register('message')}
+              {...form.register('message')}
               id='message'
               name='message'
               rows={4}
@@ -197,7 +192,7 @@ function ContactForm() {
         <div className='sm:col-span-2'>
           <button
             type='submit'
-            className='inline-flex w-full items-center justify-center border border-transparent border-zinc-100 px-6 py-3 font-display text-base  font-semibold uppercase  text-white shadow-sm hover:border-hover  hover:text-hover focus:outline-none focus:ring-2 focus:ring-hover focus:ring-offset-2'
+            className='inline-flex w-full items-center justify-center border border-transparent border-zinc-100 px-6 py-3 font-display text-base font-semibold  uppercase text-white  shadow-sm hover:border-hover hover:text-hover  focus:outline-none focus:ring-2 focus:ring-hover focus:ring-offset-2 disabled:bg-red-500'
           >
             Envoyer
           </button>
