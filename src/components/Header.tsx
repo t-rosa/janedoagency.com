@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { useAppSelector } from 'hooks/useAppSelector'
-import homeVinylText from 'images/vinyl/text/accueil.svg'
 import Link from 'next/link'
 import { selectHomePage, selectNavigationMenu, synchronizeCurrentPage } from 'slices/navigation'
 import { closeOverlay, selectOverlay, toggleOverlay } from 'slices/overlay'

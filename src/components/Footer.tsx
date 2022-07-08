@@ -4,9 +4,9 @@ import linkedin from 'images/networks/linkedin.svg'
 import tiktok from 'images/networks/tiktok.svg'
 import twitter from 'images/networks/twitter.svg'
 import youtube from 'images/networks/youtube.svg'
+import Image from 'next/future/image'
 import Link from 'next/link'
 import Logo from './Logo'
-import Image from 'next/future/image'
 
 const SERVICES = [
   {

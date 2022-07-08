@@ -1,6 +1,7 @@
-import Image from 'next/future/image'
-import vinyl from 'images/vinyl/vinyl.webp'
 import comingSoonVinylText from 'images/vinyl/text/coming-soon.svg'
+import vinyl from 'images/vinyl/vinyl.webp'
+import Image from 'next/future/image'
+
 function ComingSoon() {
   return (
     <section className='grid place-items-center p-5 mix-blend-lighten'>

@@ -1,6 +1,6 @@
+import ComingSoon from 'components/ComingSoon'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import ComingSoon from 'components/ComingSoon'
 
 const Team: NextPage = () => {
   return (
