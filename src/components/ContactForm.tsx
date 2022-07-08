@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import Modal from './Modal'
+import axios from 'axios'
 
 const schema = z.object({
   firstName: z
@@ -33,9 +34,12 @@ const schema = z.object({
     .min(1)
     .max(500, 'Le message ne peux pas contenir plus de 500 caractères.'),
 })
+
 function ContactForm() {
   const [agreed, setAgreed] = useState(false)
   const [open, setOpen] = useState(false)
+  const [title, setTitle] = useState('Email envoyé avec succès')
+  const [type, setType] = useState('success')
   const agreedButton = useRef(null)
   const {
     register,
@@ -53,20 +57,33 @@ function ContactForm() {
     resolver: zodResolver(schema),
   })
 
+  function onSubmit(data: any) {
+    if (agreed) {
+      axios
+        .post('/api/contacts', data)
+        .then(() => {
+          setType('success')
+          setTitle('Email envoyé avec succès')
+          setOpen(true)
+          setAgreed(false)
+          reset()
+        })
+        .catch((error) => {
+          setType('error')
+          setTitle("Il y a eu une érreur lors de l'envoi du mail")
+          setOpen(true)
+        })
+    } else {
+      const currentAgreedButton: any = agreedButton.current
+      currentAgreedButton.focus()
+    }
+  }
+
   return (
     <>
-      <Modal type='success' open={open} setOpen={setOpen} title={'Email envoyé avec succès'} />
+      <Modal type={type} open={open} setOpen={setOpen} title={title} />
       <form
-        onSubmit={handleSubmit((contactInfo: any) => {
-          if (agreed) {
-            setOpen(true)
-            setAgreed(false)
-            reset()
-          } else {
-            const currentAgreedButton: any = agreedButton.current
-            currentAgreedButton.focus()
-          }
-        })}
+        onSubmit={handleSubmit(onSubmit)}
         className='grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'
       >
         <div>
