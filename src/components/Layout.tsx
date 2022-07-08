@@ -9,12 +9,10 @@ interface Props {
 }
 
 function Layout({ children }: Props) {
-  const [vinylText, setVinylText] = useState(homeVinylText)
-
   return (
     <>
-      <Overlay vinylText={vinylText} setVinylText={setVinylText} />
-      <Header setVinylText={setVinylText} />
+      <Overlay />
+      <Header />
       {children}
       <Footer />
     </>

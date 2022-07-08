@@ -1,21 +1,17 @@
 import clsx from 'clsx'
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { useAppSelector } from 'hooks/useAppSelector'
+import homeVinylText from 'images/vinyl/text/accueil.svg'
 import Link from 'next/link'
-import { Dispatch, SetStateAction } from 'react'
+import { selectHomePage, selectNavigationMenu, synchronizeCurrentPage } from 'slices/navigation'
+import { closeOverlay, selectOverlay, toggleOverlay } from 'slices/overlay'
 import Logo from './Logo'
 
-import homeVinylText from 'images/vinyl/text/accueil.svg'
-import { useAppSelector } from 'hooks/useAppSelector'
-import { closeOverlay, selectOverlay, toggleOverlay } from 'slices/overlay'
-import { useAppDispatch } from 'hooks/useAppDispatch'
-import { selectNavigationMenu } from 'slices/navigation'
-
-interface Props {
-  setVinylText: Dispatch<SetStateAction<string>>
-}
-
-function Mobile({ setVinylText }: Props) {
+function Mobile() {
   const overlay = useAppSelector(selectOverlay)
+  const homePage = useAppSelector(selectHomePage)
   const dispatch = useAppDispatch()
+
   return (
     <div className='ml-3 flex h-full justify-between lg:hidden'>
       <nav className='flex items-center'>
@@ -25,10 +21,10 @@ function Mobile({ setVinylText }: Props) {
               if (overlay.isOpen) {
                 dispatch(closeOverlay())
                 setTimeout(() => {
-                  setVinylText(homeVinylText)
+                  dispatch(synchronizeCurrentPage(homePage))
                 }, 1500)
               } else {
-                setVinylText(homeVinylText)
+                dispatch(synchronizeCurrentPage(homePage))
               }
             }}
           >
@@ -58,10 +54,12 @@ function Mobile({ setVinylText }: Props) {
   )
 }
 
-function Desktop({ setVinylText }: Props) {
+function Desktop() {
   const overlay = useAppSelector(selectOverlay)
   const menu = useAppSelector(selectNavigationMenu)
+  const homePage = useAppSelector(selectHomePage)
   const dispatch = useAppDispatch()
+
   return (
     <div className='ml-10 hidden h-full grid-cols-[auto_10rem] gap-10 lg:grid'>
       <nav className='col-[1/2] flex items-center justify-between'>
@@ -71,10 +69,10 @@ function Desktop({ setVinylText }: Props) {
               if (overlay.isOpen) {
                 dispatch(closeOverlay())
                 setTimeout(() => {
-                  setVinylText(homeVinylText)
+                  dispatch(synchronizeCurrentPage(homePage))
                 }, 1500)
               } else {
-                setVinylText(homeVinylText)
+                dispatch(synchronizeCurrentPage(homePage))
               }
             }}
           >
@@ -84,15 +82,17 @@ function Desktop({ setVinylText }: Props) {
         <ul
           className={clsx(overlay.isOpen ? 'opacity-0' : 'opacity-100', 'flex gap-5 duration-500')}
         >
-          {menu.map((item) => (
-            <li key={item.id}>
-              <Link href={item.url}>
+          {menu.map((page) => (
+            <li key={page.id}>
+              <Link href={page.url}>
                 <a
-                  onClick={() => setVinylText(item.vinylText)}
+                  onClick={() => {
+                    dispatch(synchronizeCurrentPage(page))
+                  }}
                   className='relative block before:absolute before:bottom-0 before:h-[1px] before:w-0 before:bg-hover before:duration-500 hover:text-hover before:hover:w-full'
                 >
-                  <div className='text-xl font-light'>0{item.id}.</div>
-                  <div className='font-display text-2xl capitalize'>{item.label}</div>
+                  <div className='text-xl font-light'>0{page.id}.</div>
+                  <div className='font-display text-2xl capitalize'>{page.label}</div>
                 </a>
               </Link>
             </li>
@@ -121,7 +121,7 @@ function Desktop({ setVinylText }: Props) {
   )
 }
 
-function Header({ setVinylText }: Props) {
+function Header() {
   const overlay = useAppSelector(selectOverlay)
   return (
     <header
@@ -130,8 +130,8 @@ function Header({ setVinylText }: Props) {
         'fixed inset-x-0 z-10 h-24 border-b'
       )}
     >
-      <Mobile setVinylText={setVinylText} />
-      <Desktop setVinylText={setVinylText} />
+      <Mobile />
+      <Desktop />
     </header>
   )
 }

@@ -5,17 +5,20 @@ import vinyl from 'images/vinyl/vinyl.webp'
 import Image from 'next/future/image'
 import Link from 'next/link'
 import { Dispatch, SetStateAction } from 'react'
-import { selectNavigationMenu } from 'slices/navigation'
+import { selectCurrentPage, selectNavigationMenu, synchronizeCurrentPage } from 'slices/navigation'
 import { closeOverlay, selectOverlay } from 'slices/overlay'
 
 interface Props {
   vinylText: string
   setVinylText: Dispatch<SetStateAction<string>>
 }
-function Mobile({ vinylText, setVinylText }: Props) {
+
+function Mobile() {
   const overlay = useAppSelector(selectOverlay)
   const menu = useAppSelector(selectNavigationMenu)
+  const currentPage = useAppSelector(selectCurrentPage)
   const dispatch = useAppDispatch()
+
   return (
     <div
       className={clsx(
@@ -25,23 +28,23 @@ function Mobile({ vinylText, setVinylText }: Props) {
     >
       <nav className='z-10 mx-auto'>
         <ul className='grid gap-6'>
-          {menu.map((item) => (
-            <li key={item.id} className='overflow-y-hidden'>
-              <Link href={item.url}>
+          {menu.map((page) => (
+            <li key={page.id} className='overflow-y-hidden'>
+              <Link href={page.url}>
                 <a
                   onClick={() => {
                     setTimeout(() => {
-                      setVinylText(item.vinylText)
+                      dispatch(synchronizeCurrentPage(page))
                     }, 1500)
                     dispatch(closeOverlay())
                   }}
                   className={clsx(
                     overlay.isOpen ? `translate-y-0 ` : `translate-y-full `,
-                    `block transition-transform ${item.delayIn} duration-500 `
+                    `block transition-transform ${page.delayIn} duration-500 `
                   )}
                 >
-                  <span className='text-xl font-light'>0{item.id}.</span>&nbsp;
-                  <span className='font-display text-4xl font-bold capitalize'>{item.label}</span>
+                  <span className='text-xl font-light'>0{page.id}.</span>&nbsp;
+                  <span className='font-display text-4xl font-bold capitalize'>{page.label}</span>
                 </a>
               </Link>
             </li>
@@ -62,7 +65,7 @@ function Mobile({ vinylText, setVinylText }: Props) {
           height={500}
         />
         <Image
-          src={vinylText}
+          src={currentPage.vinylText}
           alt=''
           className='col-[1/2] row-[1/2] animate-spin-vinyl'
           width={500}
@@ -72,9 +75,10 @@ function Mobile({ vinylText, setVinylText }: Props) {
     </div>
   )
 }
-function Desktop({ vinylText, setVinylText }: Props) {
+function Desktop() {
   const overlay = useAppSelector(selectOverlay)
   const menu = useAppSelector(selectNavigationMenu)
+  const currentPage = useAppSelector(selectCurrentPage)
   const dispatch = useAppDispatch()
 
   return (
@@ -86,25 +90,25 @@ function Desktop({ vinylText, setVinylText }: Props) {
     >
       <nav className='relative z-10 grid h-full place-items-center bg-black'>
         <ul className='grid gap-6'>
-          {menu.map((item) => (
-            <li key={item.id} className='overflow-y-hidden'>
-              <Link href={item.url}>
+          {menu.map((page) => (
+            <li key={page.id} className='overflow-y-hidden'>
+              <Link href={page.url}>
                 <a
                   onClick={() => {
                     setTimeout(() => {
-                      setVinylText(item.vinylText)
+                      dispatch(synchronizeCurrentPage(page))
                     }, 1500)
                     dispatch(closeOverlay())
                   }}
                   className={clsx(
                     overlay.isOpen
-                      ? `translate-y-0 ${item.delayIn}`
-                      : `translate-y-full ${item.delayOut}`,
+                      ? `translate-y-0 ${page.delayIn}`
+                      : `translate-y-full ${page.delayOut}`,
                     'block w-fit cursor-pointer capitalize transition-transform duration-500 before:absolute before:bottom-0 before:h-[1px] before:w-0 before:bg-hover before:duration-500 hover:text-hover before:hover:w-full'
                   )}
                 >
-                  <span className='text-xl font-light'>0{item.id}.</span>&nbsp;
-                  <span className='font-display text-4xl font-bold capitalize'>{item.label}</span>
+                  <span className='text-xl font-light'>0{page.id}.</span>&nbsp;
+                  <span className='font-display text-4xl font-bold capitalize'>{page.label}</span>
                 </a>
               </Link>
             </li>
@@ -131,7 +135,7 @@ function Desktop({ vinylText, setVinylText }: Props) {
           height={800}
         />
         <Image
-          src={vinylText}
+          src={currentPage.vinylText}
           alt=''
           className='col-[1/2] row-[1/2] animate-spin-vinyl'
           width={800}
@@ -142,7 +146,7 @@ function Desktop({ vinylText, setVinylText }: Props) {
   )
 }
 
-function Overlay({ vinylText, setVinylText }: Props) {
+function Overlay() {
   const overlay = useAppSelector(selectOverlay)
   return (
     <div
@@ -151,8 +155,8 @@ function Overlay({ vinylText, setVinylText }: Props) {
         'fixed inset-0 z-10 bg-black duration-500'
       )}
     >
-      <Mobile vinylText={vinylText} setVinylText={setVinylText} />
-      <Desktop vinylText={vinylText} setVinylText={setVinylText} />
+      <Mobile />
+      <Desktop />
     </div>
   )
 }
