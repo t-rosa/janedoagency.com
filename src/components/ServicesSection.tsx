@@ -1,10 +1,4 @@
 import clsx from 'clsx'
-import bookingDemarchageLogo from 'images/home/logo/booking-demarchage.svg'
-import communicationDigitaleLogo from 'images/home/logo/communication-digitale.svg'
-import communicationGraphiqueLogo from 'images/home/logo/communication-graphique.svg'
-import interviewPodcastLogo from 'images/home/logo/interview-podcast.svg'
-import marketingHorsMediaLogo from 'images/home/logo/marketing-hors-media.svg'
-import relationPresseLogo from 'images/home/logo/relation-presse.svg'
 import Image from 'next/future/image'
 import { Fragment, ReactNode } from 'react'
 
@@ -13,37 +7,37 @@ const SERVICES = [
     id: 1,
     label: 'communication graphique',
     text: 'Pochettes, Publications sur les réseaux (RS) sociaux, Bannières RS, Flyers, Cartes de visite, affiches...',
-    logo: communicationGraphiqueLogo,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318242/communication-graphique_pw5hby.svg',
   },
   {
     id: 2,
     label: 'communication digitale',
     text: 'Gestion des RS, Stratégie de communication, Calendrier de publication, Campagne Ads',
-    logo: communicationDigitaleLogo,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318242/communication-digitale_kjs5zk.svg',
   },
   {
     id: 3,
     label: 'relation presse',
     text: "Dossier & Communiqué de presse, Organisation d'événements, Gestion et envoi d'e-mails",
-    logo: relationPresseLogo,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318244/relation-presse_bqkqhq.svg',
   },
   {
     id: 4,
     label: 'booking & démarchage',
     text: 'Recherche et démarchage auprès des bookeurs et des salles pour les premières parties',
-    logo: bookingDemarchageLogo,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318243/booking-demarchage_et8ofk.svg',
   },
   {
     id: 5,
     label: 'marketing hors média',
     text: 'Street marketing (distribution de flyers, stickers...), Réflexion évènementielle de votre projet',
-    logo: marketingHorsMediaLogo,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318243/marketing-hors-media_szhzy7.svg',
   },
   {
     id: 6,
     label: 'interview & podcast',
     text: 'Promotion de votre musique et de vos projets : Interview sur les RS, Podcasts en streaming',
-    logo: interviewPodcastLogo,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318242/interview-podcast_v77wft.svg',
   },
 ]
 

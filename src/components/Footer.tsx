@@ -61,37 +61,37 @@ const SOCIALS = [
   {
     id: 1,
     label: 'Facebook',
-    logo: facebook,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318244/facebook_phyq2g.svg',
     url: 'https://www.facebook.com/JaneDoAgency ',
   },
   {
     id: 2,
     label: 'Instagram',
-    logo: instagram,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318245/instagram_ia9vqa.svg',
     url: 'https://www.instagram.com/janedoagency/ ',
   },
   {
     id: 3,
     label: 'Linkedin',
-    logo: linkedin,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318245/linkedin_k3uhib.svg',
     url: 'https://www.linkedin.com/company/jane-do-music/about/',
   },
   {
     id: 4,
     label: 'Tiktok',
-    logo: tiktok,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318245/tiktok_rcbfx3.svg',
     url: 'https://www.tiktok.com/@janedoagency',
   },
   {
     id: 5,
     label: 'Twitter',
-    logo: twitter,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318246/twitter_wnndce.svg',
     url: 'https://twitter.com/jane_do_agency',
   },
   {
     id: 6,
     label: 'YouTube',
-    logo: youtube,
+    logo: 'https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318247/youtube_xaedca.svg',
     url: 'https://www.youtube.com/channel/UCTUWe0j646_xD5af1hyfAHQ',
   },
 ]

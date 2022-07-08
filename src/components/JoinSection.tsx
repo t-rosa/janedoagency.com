@@ -1,8 +1,5 @@
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { useAppSelector } from 'hooks/useAppSelector'
-import desktopBackground from 'images/home/join-desktop-bg.webp'
-import mobileBackground from 'images/home/join-mobile-bg.webp'
-import tabletBackground from 'images/home/join-tablet-bg.webp'
 import Image from 'next/future/image'
 import Link from 'next/link'
 import { selectNavigationMenu, synchronizeCurrentPage } from 'slices/navigation'
@@ -13,7 +10,7 @@ function Mobile() {
   return (
     <div className='sm:hidden'>
       <Image
-        src={mobileBackground}
+        src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318241/join-mobile-bg_ejuquq.webp'
         className='opacity-50 mix-blend-lighten'
         alt='Image de fond de la section "rejoindre"'
         width={640}
@@ -47,7 +44,7 @@ function Tablet() {
     <div className='hidden sm:block xl:hidden'>
       <div className='flex justify-end'>
         <Image
-          src={tabletBackground}
+          src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318242/join-tablet-bg_cwyl3o.webp'
           className='opacity-50 mix-blend-lighten'
           alt='Image de fond de la section "rejoindre"'
           width={640}
@@ -85,7 +82,7 @@ function Desktop() {
     <div className='hidden xl:block'>
       <div className='flex justify-end'>
         <Image
-          src={desktopBackground}
+          src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318241/join-desktop-bg_l1bxpk.webp'
           className=' mix-blend-lighten'
           alt='Image de fond de la section "rejoindre"'
           width={800}

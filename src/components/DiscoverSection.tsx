@@ -1,13 +1,10 @@
-import desktopBackground from 'images/home/discover-desktop-bg.webp'
-import mobileBackground from 'images/home/discover-mobile-bg.webp'
-import tabletBackground from 'images/home/discover-tablet-bg.webp'
 import Image from 'next/future/image'
 
 function Mobile() {
   return (
     <div className='sm:hidden'>
       <Image
-        src={mobileBackground}
+        src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318241/discover-mobile-bg_u5wmug.webp'
         className='opacity-50 mix-blend-lighten'
         alt='Image de fond de la section "découvrir"'
         width={640}
@@ -30,7 +27,7 @@ function Tablet() {
   return (
     <div className='hidden sm:block xl:hidden'>
       <Image
-        src={tabletBackground}
+        src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318241/discover-tablet-bg_sdljy0.webp'
         className='opacity-50 mix-blend-lighten'
         alt='Image de fond de la section "découvrir"'
         width={640}
@@ -55,7 +52,7 @@ function Desktop() {
   return (
     <div className='hidden xl:block'>
       <Image
-        src={desktopBackground}
+        src='https://res.cloudinary.com/toma-rosa-ynov/image/upload/v1657318241/discover-desktop-bg_bcseyk.webp'
         className=' mix-blend-lighten'
         alt='Image de fond de la section "découvrir"'
         width={800}
