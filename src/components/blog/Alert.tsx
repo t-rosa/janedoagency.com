@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { EXAMPLE_PATH } from 'lib/constants'
+import Link from 'next/link'
 
 export default function Alert({ preview }: any) {
   return (
@@ -12,14 +12,13 @@ export default function Alert({ preview }: any) {
       <div className='py-2 text-center text-sm'>
         {preview && (
           <>
-            Cette page est en mode preview.{' '}
-            <a
-              href='/api/exit-preview'
-              className='underline transition-colors duration-200 hover:text-hover'
-            >
-              Cliquez ici
-            </a>{' '}
-            pour quitter le mode preview.
+            Cette page est en mode preview.&nbsp;
+            <Link href='/api/exit-preview'>
+              <a className='underline transition-colors duration-200 hover:text-hover'>
+                Cliquez ici
+              </a>
+            </Link>
+            &nbsp; pour quitter le mode preview.
           </>
         )}
       </div>

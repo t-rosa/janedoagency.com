@@ -6,22 +6,24 @@ import Head from 'next/head'
 
 const Blog: NextPage = ({ allPosts }: any) => {
   return (
-    <BlogLayout>
+    <>
       <Head>
         <title>Jane Do Agency - Blog</title>
       </Head>
-      {allPosts.map((post: any) => (
-        <PostCard
-          key={post.id}
-          title={post.title}
-          coverImage={post.coverImage}
-          date={post.date}
-          author={post.author}
-          slug={post.slug}
-          excerpt={post.excerpt}
-        />
-      ))}
-    </BlogLayout>
+      <BlogLayout>
+        {allPosts.map((post: any) => (
+          <PostCard
+            key={post.id}
+            title={post.title}
+            coverImage={post.coverImage}
+            date={post.date}
+            author={post.author}
+            slug={post.slug}
+            excerpt={post.excerpt}
+          />
+        ))}
+      </BlogLayout>
+    </>
   )
 }
 
