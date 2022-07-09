@@ -14,7 +14,7 @@ const Blog: NextPage = ({ allPosts }: any) => {
       <BlogLayout>
         {allPosts.map((post: any) => (
           <PostCard
-            key={post.id}
+            key={post.title}
             title={post.title}
             coverImage={post.coverImage}
             date={post.date}

@@ -1,5 +1,4 @@
 import Alert from './Alert'
-import Meta from './Meta'
 
 export default function BlogLayout({ preview, children }: any) {
   return (
