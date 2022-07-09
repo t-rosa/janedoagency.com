@@ -21,15 +21,5 @@ export default function CoverImage({ title, responsiveImage, slug }: Props) {
     />
   )
 
-  return (
-    <div className='sm:mx-0'>
-      {slug ? (
-        <Link href={`/blog/${slug}`}>
-          <a aria-label={title}>{image}</a>
-        </Link>
-      ) : (
-        image
-      )}
-    </div>
-  )
+  return <div className='sm:mx-0'>{slug ? <span aria-label={title}>{image}</span> : image}</div>
 }

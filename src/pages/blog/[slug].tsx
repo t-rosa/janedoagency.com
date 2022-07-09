@@ -108,6 +108,7 @@ export async function getStaticProps({ params, preview = false }: any) {
       },
       morePosts: data?.morePosts ?? [],
     },
+    revalidate: 10
   }
 }
 
@@ -115,6 +116,6 @@ export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug()
   return {
     paths: allPosts?.map((post: any) => `/blog/${post.slug}`) || [],
-    fallback: true,
+    fallback: "blocking",
   }
 }
