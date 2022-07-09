@@ -74,6 +74,7 @@ export default function Post({ post, morePosts, preview }: any) {
                       <figure>
                         <div className='aspect-w-12 aspect-h-7 lg:aspect-none border border-zinc-700 shadow-xl'>
                           <CoverImage
+                            slug={post.slug}
                             responsiveImage={post.coverImage.responsiveImage}
                             title={post.title}
                           />

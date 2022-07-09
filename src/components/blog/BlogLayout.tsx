@@ -4,7 +4,6 @@ import Meta from './Meta'
 export default function BlogLayout({ preview, children }: any) {
   return (
     <>
-      <Meta />
       <Alert preview={preview} />
       <div className='relative px-4 pt-24 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28'>
         <div className='absolute inset-0'>

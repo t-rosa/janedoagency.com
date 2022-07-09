@@ -9,6 +9,7 @@ const Blog: NextPage = ({ allPosts }: any) => {
     <>
       <Head>
         <title>Jane Do Agency - Blog</title>
+        <meta name='description' content={`Blog Jane Do Agency.`} />
       </Head>
       <BlogLayout>
         {allPosts.map((post: any) => (

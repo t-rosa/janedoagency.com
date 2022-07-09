@@ -1,6 +1,10 @@
 import { parseISO, format } from 'date-fns'
 
-export default function Date({ dateString }: any) {
+interface Props {
+  dateString: string
+}
+
+export default function Date({ dateString }: Props) {
   const date = parseISO(dateString)
   return (
     <time dateTime={dateString} className='text-md font-light text-zinc-300'>
