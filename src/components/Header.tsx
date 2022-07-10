@@ -88,7 +88,9 @@ function Desktop() {
                   onClick={() => {
                     dispatch(synchronizeCurrentPage(page))
                   }}
-                  className='relative block before:absolute before:bottom-0 before:h-[1px] before:w-0 before:bg-hover before:duration-500 hover:text-hover before:hover:w-full'
+                  className='relative block overflow-hidden 
+                    before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full 
+                    before:-translate-x-[101%] before:bg-hover before:duration-500 hover:text-hover before:hover:translate-x-0'
                 >
                   <div className='text-xl font-light'>0{page.id}.</div>
                   <div className='font-display text-2xl capitalize'>{page.label}</div>
