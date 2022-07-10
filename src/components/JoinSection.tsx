@@ -103,7 +103,7 @@ function Desktop() {
           <Link href='/contact'>
             <a
               onClick={() => dispatch(synchronizeCurrentPage(navigation.at(4)))}
-              className='w-fit self-start border py-4 px-8 font-display text-4xl font-bold uppercase hover:border-hover hover:text-hover'
+              className='w-fit self-start border py-4 px-8 font-display text-4xl font-bold uppercase duration-200 hover:border-hover hover:text-hover hover:shadow-md'
             >
               nous contacter
             </a>
