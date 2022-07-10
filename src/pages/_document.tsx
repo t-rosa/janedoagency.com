@@ -2,7 +2,10 @@ import { Head, Html, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html className='overflow-x-hidden scroll-smooth bg-zinc-900 font-sans text-white' lang='fr'>
+    <Html
+      className='overflow-x-hidden scroll-smooth bg-zinc-900 bg-[url("/main-pattern.webp")] font-sans text-white'
+      lang='fr'
+    >
       <Head>
         <meta
           name='description'

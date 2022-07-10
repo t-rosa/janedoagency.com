@@ -312,7 +312,7 @@ function Desktop() {
 }
 function Footer() {
   return (
-    <footer className='border-t'>
+    <footer className='border-t bg-zinc-900'>
       <Mobile />
       <Tablet />
       <Desktop />
