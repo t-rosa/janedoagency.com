@@ -33,7 +33,7 @@ function Layout({ children }: Props) {
             setTransitionStage('translate-x-0 opacity-100')
           }
         }}
-        className={clsx(transitionStage, 'mix-blend-screen duration-700 ease-in-out')}
+        className={clsx(transitionStage, 'bg-zinc-900 mix-blend-lighten duration-700 ease-in-out')}
       >
         <div>{displayChildren}</div>
       </div>
