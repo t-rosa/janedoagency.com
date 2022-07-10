@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import { useRouter } from 'next/router'
 import { ReactNode, useEffect, useState } from 'react'
 import Footer from './Footer'
 import Header from './Header'
@@ -35,7 +34,7 @@ function Layout({ children }: Props) {
         }}
         className={clsx(transitionStage, 'bg-zinc-900 mix-blend-lighten duration-700 ease-in-out')}
       >
-        <div>{displayChildren}</div>
+        {displayChildren}
       </div>
       <Footer />
     </>
