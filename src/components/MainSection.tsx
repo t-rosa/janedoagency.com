@@ -23,9 +23,9 @@ function Mobile() {
           Découvrez notre multitude de services et compétences à travers notre site internet ainsi
           que nos différents réseaux.
         </p>
-        <Link href='#discover'>
-          <a className='border py-2 px-4 font-display text-2xl font-bold uppercase'>découvrir</a>
-        </Link>
+        <a href='#discover' className='border py-2 px-4 font-display text-2xl font-bold uppercase '>
+          découvrir
+        </a>
       </div>
     </div>
   )
@@ -53,11 +53,12 @@ function Tablet() {
             Découvrez notre multitude de services et compétences à travers notre site internet ainsi
             que nos différents réseaux.
           </p>
-          <Link href='#discover'>
-            <a className='w-fit self-start border py-3 px-6 font-display text-3xl font-bold uppercase hover:border-hover hover:text-hover lg:py-4 lg:px-8 lg:text-4xl'>
-              découvrir
-            </a>
-          </Link>
+          <a
+            href='#discover'
+            className='w-fit self-start border py-3 px-6 font-display text-3xl font-bold uppercase hover:border-hover hover:text-hover lg:py-4 lg:px-8 lg:text-4xl'
+          >
+            découvrir
+          </a>
         </div>
       </div>
     </div>
@@ -85,11 +86,13 @@ function Desktop() {
             que nos différents réseaux. Jane Do c&apos;est l’agence qui vous aidera à trouver votre
             place, qu’importe votre style !
           </p>
-          <Link href='#discover'>
-            <a className='w-fit self-start border py-4 px-8 font-display text-4xl font-bold uppercase hover:border-hover hover:text-hover'>
-              découvrir
-            </a>
-          </Link>
+
+          <a
+            href='#discover'
+            className='w-fit self-start border py-4 px-8 font-display text-4xl font-bold uppercase duration-200 hover:border-hover hover:text-hover hover:shadow-md'
+          >
+            découvrir
+          </a>
         </div>
       </div>
     </div>

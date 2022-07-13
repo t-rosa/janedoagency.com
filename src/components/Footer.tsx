@@ -157,11 +157,9 @@ function Mobile() {
           </ul>
         </nav>
       </div>
-      <Link href='#'>
-        <a>
-          <Logo />
-        </a>
-      </Link>
+      <a href='#'>
+        <Logo />
+      </a>
       <p className='text-gray-400'>&copy;2022 Jane Do - Tous droits réservés</p>
     </div>
   )
@@ -229,11 +227,9 @@ function Tablet() {
           </ul>
         </nav>
       </div>
-      <Link href='#'>
-        <a>
-          <Logo />
-        </a>
-      </Link>
+      <a href='#'>
+        <Logo />
+      </a>
       <p className='col-span-2 text-gray-400'>&copy;2022 Jane Do - Tous droits réservés</p>
     </div>
   )
@@ -301,18 +297,17 @@ function Desktop() {
           </ul>
         </nav>
       </div>
-      <Link href='#'>
-        <a className='self-start'>
-          <Logo />
-        </a>
-      </Link>
+
+      <a href='#' className='self-start'>
+        <Logo />
+      </a>
       <p className='col-span-4 text-zinc-400'>&copy;2022 Jane Do - Tous droits réservés</p>
     </div>
   )
 }
 function Footer() {
   return (
-    <footer className='border-t'>
+    <footer className='border-t bg-zinc-900'>
       <Mobile />
       <Tablet />
       <Desktop />

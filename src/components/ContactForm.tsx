@@ -164,7 +164,8 @@ function ContactForm() {
       <div className='sm:col-span-2'>
         <button
           type='submit'
-          className='inline-flex w-full items-center justify-center border border-transparent border-zinc-100 px-6 py-3 font-display text-base font-semibold  uppercase text-white  shadow-sm hover:border-hover hover:text-hover  focus:outline-none focus:ring-2 focus:ring-hover focus:ring-offset-2 disabled:bg-red-500'
+          disabled={contact.loading === 'pending'}
+          className='inline-flex w-full items-center justify-center border border-transparent border-zinc-100 px-6 py-3 font-display text-base font-semibold uppercase text-white shadow-sm  duration-200 hover:border-hover  hover:text-hover hover:shadow-md focus:outline-none  focus:ring-2 focus:ring-hover focus:ring-offset-2'
         >
           Envoyer
         </button>

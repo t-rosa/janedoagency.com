@@ -4,14 +4,8 @@ import { useAppSelector } from 'hooks/useAppSelector'
 import vinyl from 'images/vinyl/vinyl.webp'
 import Image from 'next/future/image'
 import Link from 'next/link'
-import { Dispatch, SetStateAction } from 'react'
 import { selectCurrentPage, selectNavigationMenu, synchronizeCurrentPage } from 'slices/navigation'
 import { closeOverlay, selectOverlay } from 'slices/overlay'
-
-interface Props {
-  vinylText: string
-  setVinylText: Dispatch<SetStateAction<string>>
-}
 
 function Mobile() {
   const overlay = useAppSelector(selectOverlay)
@@ -104,7 +98,7 @@ function Desktop() {
                     overlay.isOpen
                       ? `translate-y-0 ${page.delayIn}`
                       : `translate-y-full ${page.delayOut}`,
-                    'block w-fit cursor-pointer capitalize transition-transform duration-500 before:absolute before:bottom-0 before:h-[1px] before:w-0 before:bg-hover before:duration-500 hover:text-hover before:hover:w-full'
+                    'block w-fit cursor-pointer overflow-hidden capitalize transition-transform duration-500 before:absolute before:bottom-0 before:h-[1px] before:w-full before:-translate-x-full before:bg-hover before:duration-500 hover:text-hover before:hover:translate-x-0'
                   )}
                 >
                   <span className='text-xl font-light'>0{page.id}.</span>&nbsp;
@@ -116,8 +110,8 @@ function Desktop() {
         </ul>
         <div
           className={clsx(
-            overlay.isOpen ? 'h-full delay-900' : 'h-0 delay-300',
-            'absolute top-0 right-0 w-[1px] bg-white duration-500'
+            overlay.isOpen ? 'translate-y-0 delay-900' : '-translate-y-full delay-300',
+            'absolute top-0 right-0 h-full w-[1px] bg-white duration-500'
           )}
         />
       </nav>
